@@ -253,6 +253,7 @@ function InitMainGame_hall(wnd)
 	--µ×Í¼±³¾°
 	MainHall_BK = wnd:AddImage(path_MailHallSkin,0,0,1280,800)
 	MainHall_Effect = wnd:AddEffect(Dynamic_BG,0,0,1280,800)
+	local backgroundeffect = wnd:AddEffect("../Data/Magic/Common/UI/changwai/183Skin1/183Skin1_od.x",0,0,1280,800)
 	btn_taaa = wnd:AddImage("../data/wallpaper/20.bmp",0,0,1280,800)
     --local bk_T = wnd:AddButton("../data/wallpaper/l.bmp","../data/wallpaper/l1.bmp","../data/wallpaper/l2.bmp",189,730-OffsetY1,69,70)
     --local time = 1
@@ -950,65 +951,80 @@ function InitMainGame_hall(wnd)
 	liuguang.script[XE_LBUP] = function()
 		if liuguangdianji:IsVisible() then
 			liuguangdianji:SetVisible(0)
+			backgroundeffect:SetVisible(0)
 		else
 			liuguangdianji:SetVisible(1)
 			yinghuashudianji:SetVisible(0)
 			luoxuedianji:SetVisible(0)
 			yudidianji:SetVisible(0)
 			pianyidianji:SetVisible(0)
+			backgroundeffect:SetVisible(1)
+			backgroundeffect:ChangeEffect("../Data/Magic/Common/UI/changwai/183Skin1/183Skin1_od.x")
 		end
 	end
 
 	yinghuashu.script[XE_LBUP] = function()
 		if liuguangdianji:IsVisible() then
 			yinghuashudianji:SetVisible(0)
+			backgroundeffect:SetVisible(0)
 		else
 			liuguangdianji:SetVisible(0)
 			yinghuashudianji:SetVisible(1)
 			luoxuedianji:SetVisible(0)
 			yudidianji:SetVisible(0)
 			pianyidianji:SetVisible(0)
+			backgroundeffect:SetVisible(1)
 		end
 	end
 
 	luoxue.script[XE_LBUP] = function()
 		if liuguangdianji:IsVisible() then
 			luoxuedianji:SetVisible(0)
+			backgroundeffect:SetVisible(0)
 		else
 			liuguangdianji:SetVisible(0)
 			yinghuashudianji:SetVisible(0)
 			luoxuedianji:SetVisible(1)
 			yudidianji:SetVisible(0)
 			pianyidianji:SetVisible(0)
+			backgroundeffect:SetVisible(1)
 		end
 	end
 
 	yudi.script[XE_LBUP] = function()
 		if liuguangdianji:IsVisible() then
 			yudidianji:SetVisible(0)
+			backgroundeffect:SetVisible(0)
 		else
 			liuguangdianji:SetVisible(0)
 			yinghuashudianji:SetVisible(0)
 			luoxuedianji:SetVisible(0)
 			yudidianji:SetVisible(1)
 			pianyidianji:SetVisible(0)
+			backgroundeffect:SetVisible(1)
 		end
 	end
 
 	pianyi.script[XE_LBUP] = function()
 		if liuguangdianji:IsVisible() then
 			pianyidianji:SetVisible(0)
+			backgroundeffect:SetVisible(0)
 		else
 			liuguangdianji:SetVisible(0)
 			yinghuashudianji:SetVisible(0)
 			luoxuedianji:SetVisible(0)
 			yudidianji:SetVisible(0)
 			pianyidianji:SetVisible(1)
+			backgroundeffect:SetVisible(1)
 		end
 	end
     
 	local shipinbutton = beijing_BKWND:AddButton(path.."bt.BMP",path.."bt2.BMP",path.."bt3.BMP",143,-15,87,20)
-   
+
+	yinghuashudianji:SetVisible(0)
+	luoxuedianji:SetVisible(0)
+	yudidianji:SetVisible(0)
+	pianyidianji:SetVisible(0)
 
     --±³¾°ÇÐ»»½áÊø
 	MainHall_BK.script[XE_LBUP] = function()
