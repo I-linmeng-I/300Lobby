@@ -941,23 +941,71 @@ function InitMainGame_hall(wnd)
     yudidianji:SetTouchEnabled(0)
     yudi:AddFont("雨滴特效",15,0,24,0,500,20,0xffffff)
 	
-	local yudi = beijing_BKWND:AddImage(path.."checkbox_login.BMP",343,-55,24,24)
-    yudi:SetTouchEnabled(1)
-    local yudidianji = yudi:AddImage(path.."checkboxhave_login.BMP",0,0,24,24)
-    yudidianji:SetTouchEnabled(0)
-    yudi:AddFont("雨滴特效",15,0,24,0,500,20,0xffffff)
-	
 	local pianyi = beijing_BKWND:AddImage(path.."checkbox_login.BMP",443,-55,24,24)
     pianyi:SetTouchEnabled(1)
     local pianyidianji = pianyi:AddImage(path.."checkboxhave_login.BMP",0,0,24,24)
     pianyidianji:SetTouchEnabled(0)
     pianyi:AddFont("鼠标偏移",15,0,24,0,500,20,0xffffff)
 	
-	local dongtai = beijing_BKWND:AddImage(path.."checkbox_login.BMP",43,-15,24,24)
-    dongtai:SetTouchEnabled(1)
-    local dongtaidianji = dongtai:AddImage(path.."checkboxhave_login.BMP",0,0,24,24)
-    dongtaidianji:SetTouchEnabled(0)
-    dongtai:AddFont("动态大厅",15,0,24,0,500,20,0xffffff)
+	liuguang.script[XE_LBUP] = function()
+		if liuguangdianji:IsVisible() then
+			liuguangdianji:SetVisible(0)
+		else
+			liuguangdianji:SetVisible(1)
+			yinghuashudianji:SetVisible(0)
+			luoxuedianji:SetVisible(0)
+			yudidianji:SetVisible(0)
+			pianyidianji:SetVisible(0)
+		end
+	end
+
+	yinghuashu.script[XE_LBUP] = function()
+		if liuguangdianji:IsVisible() then
+			yinghuashudianji:SetVisible(0)
+		else
+			liuguangdianji:SetVisible(0)
+			yinghuashudianji:SetVisible(1)
+			luoxuedianji:SetVisible(0)
+			yudidianji:SetVisible(0)
+			pianyidianji:SetVisible(0)
+		end
+	end
+
+	luoxue.script[XE_LBUP] = function()
+		if liuguangdianji:IsVisible() then
+			luoxuedianji:SetVisible(0)
+		else
+			liuguangdianji:SetVisible(0)
+			yinghuashudianji:SetVisible(0)
+			luoxuedianji:SetVisible(1)
+			yudidianji:SetVisible(0)
+			pianyidianji:SetVisible(0)
+		end
+	end
+
+	yudi.script[XE_LBUP] = function()
+		if liuguangdianji:IsVisible() then
+			yudidianji:SetVisible(0)
+		else
+			liuguangdianji:SetVisible(0)
+			yinghuashudianji:SetVisible(0)
+			luoxuedianji:SetVisible(0)
+			yudidianji:SetVisible(1)
+			pianyidianji:SetVisible(0)
+		end
+	end
+
+	pianyi.script[XE_LBUP] = function()
+		if liuguangdianji:IsVisible() then
+			pianyidianji:SetVisible(0)
+		else
+			liuguangdianji:SetVisible(0)
+			yinghuashudianji:SetVisible(0)
+			luoxuedianji:SetVisible(0)
+			yudidianji:SetVisible(0)
+			pianyidianji:SetVisible(1)
+		end
+	end
     
 	local shipinbutton = beijing_BKWND:AddButton(path.."bt.BMP",path.."bt2.BMP",path.."bt3.BMP",143,-15,87,20)
    
