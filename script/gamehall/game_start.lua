@@ -15,12 +15,12 @@ local BTN_SELL = nil
 
 
 
---------Ó¢ĞÛ¿òµ×
+--------è‹±é›„æ¡†åº•
 local hero_buttom = {}
 local hero_controlName = {}
 local hero_assistA = {}
 local hero_assistB = {}
-local hero_head = {} 		--Ó¢ĞÛÍ·Ïñ
+local hero_head = {} 		--è‹±é›„å¤´åƒ
 local hero_side = {}
 local hero_nameColor = {0xf3c874,0x65c4e7,0x65c4e7,0x65c4e7,0x65c4e7,0x65c4e7,0x65c4e7,0xdc7357,0xdc7357,0xdc7357,0xdc7357,0xdc7357,0xdc7357,0xdc7357}
 local hero_sideList = {
@@ -45,15 +45,15 @@ local Enter = {}
 
 
 
-------------------Ó¢ĞÛ¾ßÌåĞÅÏ¢
+------------------è‹±é›„å…·ä½“ä¿¡æ¯
 local HeroInfo = {}
-HeroInfo.strPictureName = {}	----Ó¢ĞÛÍ·ÏñÂ·¾¶
-HeroInfo.strName = {}			----Ó¢ĞÛÃû³Æ
+HeroInfo.strPictureName = {}	----è‹±é›„å¤´åƒè·¯å¾„
+HeroInfo.strName = {}			----è‹±é›„åç§°
 HeroInfo.heroId = {}			
 HeroInfo.heroTip = {}
-------------------ĞÅÏ¢½áÊø
+------------------ä¿¡æ¯ç»“æŸ
 
----------¸¨Öú¼¼ÄÜ´°¿Ú
+---------è¾…åŠ©æŠ€èƒ½çª—å£
 local BTN_SKILL1 = nil
 local BTN_SKILL2 = nil
 
@@ -72,7 +72,7 @@ local img_TYJN = nil
 
 
 
------ÄúµÄ¶ÓÎéUI
+-----æ‚¨çš„é˜Ÿä¼UI
 local YourTeam_ui,EnemyTeam_ui = nil
 local TalentSummonerBK = nil
 local Talent_BK,Talent_ui,Talent_pve = nil
@@ -81,27 +81,27 @@ local BTN_LIST = nil
 local LIST_BK = nil
 local Font_showAll = nil
 local SelTalentIndex = 0
-local BTN_Talent = {}		--Ìì¸³×¨¾«ÏÂÁĞ°´Å¥
-local BTN_TalentFont = {"Ìì¸³Ò³1","Ìì¸³Ò³2","Ìì¸³Ò³3","Ìì¸³Ò³4","Ìì¸³Ò³5","Ìì¸³Ò³6","Ìì¸³Ò³7","Ìì¸³Ò³8","Ìì¸³Ò³9","Ìì¸³Ò³10",}	--Ìì¸³Ò³
+local BTN_Talent = {}		--å¤©èµ‹ä¸“ç²¾ä¸‹åˆ—æŒ‰é’®
+local BTN_TalentFont = {"å¤©èµ‹é¡µ1","å¤©èµ‹é¡µ2","å¤©èµ‹é¡µ3","å¤©èµ‹é¡µ4","å¤©èµ‹é¡µ5","å¤©èµ‹é¡µ6","å¤©èµ‹é¡µ7","å¤©èµ‹é¡µ8","å¤©èµ‹é¡µ9","å¤©èµ‹é¡µ10",}	--å¤©èµ‹é¡µ
 local SummonerTalentList = {}
 
 
--- ·ûÎÄÏµÍ³
+-- ç¬¦æ–‡ç³»ç»Ÿ
 local Charm_ui = nil
 local BTN_CHARM = nil
 local BTN_Charm = {}
-local BTN_CharmFont = {"·ûÎÄÒ³1","·ûÎÄÒ³2","·ûÎÄÒ³3","·ûÎÄÒ³4","·ûÎÄÒ³5","·ûÎÄÒ³6","·ûÎÄÒ³7","·ûÎÄÒ³8"}--,"·ûÎÄÒ³9","·ûÎÄÒ³10","·ûÎÄÒ³11","·ûÎÄÒ³12","·ûÎÄÒ³13","·ûÎÄÒ³14","·ûÎÄÒ³15","·ûÎÄÒ³16" 
+local BTN_CharmFont = {"ç¬¦æ–‡é¡µ1","ç¬¦æ–‡é¡µ2","ç¬¦æ–‡é¡µ3","ç¬¦æ–‡é¡µ4","ç¬¦æ–‡é¡µ5","ç¬¦æ–‡é¡µ6","ç¬¦æ–‡é¡µ7","ç¬¦æ–‡é¡µ8"}--,"ç¬¦æ–‡é¡µ9","ç¬¦æ–‡é¡µ10","ç¬¦æ–‡é¡µ11","ç¬¦æ–‡é¡µ12","ç¬¦æ–‡é¡µ13","ç¬¦æ–‡é¡µ14","ç¬¦æ–‡é¡µ15","ç¬¦æ–‡é¡µ16" 
 local SummonerCharmList = {}
 local BTN_CHARMLIST = nil
 local CHARMLIST_BK = nil
 local CharmFont_showAll = nil
-local SelCharmIndex = 1				-- µÚ¼¸Ì×·ûÎÄ>=1
-local MaxCharmPageCount = 0 		-- Íæ¼ÒÓµÓĞµÄ·ûÎÄÒ³Ì×Êı
-local CurShowCharmIndex = 1 		-- ´Ó·ûÎÄÒ³µÄÄÄ¸öÎ»ÖÃ¿ªÊ¼ÏÔÊ¾>=1
+local SelCharmIndex = 1				-- ç¬¬å‡ å¥—ç¬¦æ–‡>=1
+local MaxCharmPageCount = 0 		-- ç©å®¶æ‹¥æœ‰çš„ç¬¦æ–‡é¡µå¥—æ•°
+local CurShowCharmIndex = 1 		-- ä»ç¬¦æ–‡é¡µçš„å“ªä¸ªä½ç½®å¼€å§‹æ˜¾ç¤º>=1
 
 
 
-local Eye_ui = nil--ÑÛ½çÃæ
+local Eye_ui = nil--çœ¼ç•Œé¢
 
 
 
@@ -123,7 +123,7 @@ local Phyattack,Magattack,Dmgadd = nil
 	
 
 
--- 265µØÍ¼Ëæ»ú
+-- 265åœ°å›¾éšæœº
 local RandomCountUI = nil
 local BuyRandomCount = nil
 local yes_buy = nil
@@ -131,13 +131,13 @@ local no_buy = nil
 local RandomCount = 0
 
 
--- 355µØÍ¼Ëæ»ú
+-- 355åœ°å›¾éšæœº
 local RandomPoolCountUI = nil
-local BTN_Random355 = nil	-- Ëæ»úÓ¢ĞÛ³Ø
-local fnt_RandomCostDesc = nil	-- Ëæ»úÓ¢ĞÛ³Ø»¨·ÑÃèÊö
-local fnt_RandomCost = nil	-- Ëæ»úÓ¢ĞÛ³Ø»¨·Ñ
-local RandomPoolLeftCount = 0	-- Ëæ»úÓ¢ĞÛ³ØÊ£Óà´ÎÊı
-local RandomPoolCount = 0	-- Ëæ»úÓ¢ĞÛ³Ø´ÎÊı
+local BTN_Random355 = nil	-- éšæœºè‹±é›„æ± 
+local fnt_RandomCostDesc = nil	-- éšæœºè‹±é›„æ± èŠ±è´¹æè¿°
+local fnt_RandomCost = nil	-- éšæœºè‹±é›„æ± èŠ±è´¹
+local RandomPoolLeftCount = 0	-- éšæœºè‹±é›„æ± å‰©ä½™æ¬¡æ•°
+local RandomPoolCount = 0	-- éšæœºè‹±é›„æ± æ¬¡æ•°
 
 local BuyRandomCount355 = nil
 local yes_buy355 = nil
@@ -145,7 +145,7 @@ local no_buy355 = nil
 
 
 
---ĞÂUI
+--æ–°UI
 local scissorwnd,scissorwndBG = nil
 local CanChoseHero_ui = nil
 local ICON_X = {}
@@ -156,7 +156,7 @@ local HERO_SIDE = {}
 local HERO_NAME = {}
 local HERO_NAMEFONT = {}
 local HERO_CLICK = nil
-local click_index = 0		-- ±»µã»÷µÄÍ¼Æ¬
+local click_index = 0		-- è¢«ç‚¹å‡»çš„å›¾ç‰‡
 
 local HEROLISTWNDOPEN = nil
 local HeroListWndOpen = {
@@ -166,16 +166,16 @@ path_lolhero.."HeroListWndOpen2.BMP",
 path_lolhero.."HeroListWndOpen3.BMP"}
 
 
---Ó¢ĞÛËÑË÷
+--è‹±é›„æœç´¢
 local HeroSearch_ui = nil		
 local heroSearchInputEdit = nil
 local heronameInput = nil
---¹ö¶¯Ìõ
+--æ»šåŠ¨æ¡
 local hero_toggleImg = nil
 local hero_togglebtn = nil
 local DownMany = 0
 
--- É¸Ñ¡
+-- ç­›é€‰
 local HEROTYPE = {}
 local HEROTYPECHOSE = {}
 local HEROTYPECLOSE = {}
@@ -205,7 +205,7 @@ path_lolhero.."TYPE42.BMP",
 path_lolhero.."TYPE52.BMP",
 path_lolhero.."TYPE62.BMP"}
 
--- ÅÅĞò
+-- æ’åº
 local HEROSORT = {}
 local HEROSORTCHOSE = {}
 local index_oftenUse = 4
@@ -237,22 +237,22 @@ path_lolhero.."SORT52.BMP",
 path_lolhero.."SORT62.BMP",
 path_lolhero.."SORT72.BMP"}
 
--- 18¸ö¾ßÌåµÄÓ¢ĞÛĞÅÏ¢
+-- 18ä¸ªå…·ä½“çš„è‹±é›„ä¿¡æ¯
 local HeroList = {}
-HeroList.strPictureName = {}	-- Ó¢ĞÛÍ·ÏñÂ·¾¶
-HeroList.strName = {}			-- Ó¢ĞÛÃû³Æ
+HeroList.strPictureName = {}	-- è‹±é›„å¤´åƒè·¯å¾„
+HeroList.strName = {}			-- è‹±é›„åç§°
 HeroList.heroId = {}
 HeroList.heroTip = {}
 HeroList.IsFavorite = {}
 
--- Ó¢ĞÛÒÑ±»Ñ¡ÔñÁĞ±í
+-- è‹±é›„å·²è¢«é€‰æ‹©åˆ—è¡¨
 local BeChosedHeroList = {}
 BeChosedHeroList.heroID = {}
 local IamReady = 0
 local MAXHERO = 300
 
 
----ÑªÌõÆ¤·ô-------------------------
+---è¡€æ¡çš®è‚¤-------------------------
 local BloodSkinChoosebtn = nil
 local BloodSkinChooseFrame = nil
 
@@ -281,7 +281,7 @@ function InitGameStart_ui(wnd, bisopen)
 	g_game_start_ui:SetVisible(bisopen)
 end
 function InitMainGameStart_ui(wnd)
-	--µ×Í¼±³¾°
+	--åº•å›¾èƒŒæ™¯
 	bgImg = wnd:AddImage(path_hero.."ffffff_hero.BMP",0,0,1280,800)
 	bgImgHide = bgImg:AddImage(path_lolhero.."hide1.BMP",0,0,1280,800)
 	local UPIMG = bgImg:AddImage(path_lolhero.."down.BMP",3000,0,1280,53)
@@ -295,7 +295,7 @@ function InitMainGameStart_ui(wnd)
 	bgImg_SkinLv:SetVisible(0)
 	
 	
-	----ÎÒ·½¶ÓÎéÑ¡ÔñÓ¢ĞÛ
+	----æˆ‘æ–¹é˜Ÿä¼é€‰æ‹©è‹±é›„
 	YourTeam_ui = CreateWindow(bgImg.id,0,0,580,90)
 	for i=1,7 do
 	    local y = (i-1)%7+1
@@ -307,7 +307,7 @@ function InitMainGameStart_ui(wnd)
 		hero_side[i] = YourTeam_ui:AddImage(hero_sideList[i],x,57*y+150,82,46)
 		hero_side[i]:SetTouchEnabled(0)
 		
-		-------Á½¸ö¸¨Öú¼¼ÄÜ
+		-------ä¸¤ä¸ªè¾…åŠ©æŠ€èƒ½
 		hero_assistB[i] = hero_side[i]:AddImage(path_equip.."bag_equip.BMP",61+4,17+4,18,18)
 		hero_assistA[i] = hero_side[i]:AddImage(path_equip.."bag_equip.BMP",48+4,29+4,18,18)
 		FR1[i] = hero_assistB[i]:AddImage(path_lolhero.."FRsummoner.BMP",-1,-1,20,20)
@@ -318,7 +318,7 @@ function InitMainGameStart_ui(wnd)
 		Enter[i]:SetTouchEnabled(0)
 	end
 
-	----µĞ·½¶ÓÎéÑ¡ÔñÓ¢ĞÛ
+	----æ•Œæ–¹é˜Ÿä¼é€‰æ‹©è‹±é›„
 	EnemyTeam_ui = CreateWindow(bgImg.id,700,0,580,90)
 	for i=8,14 do
 	    local y = (i-1)%7+1
@@ -329,7 +329,7 @@ function InitMainGameStart_ui(wnd)
 		hero_side[i] = EnemyTeam_ui:AddImage(hero_sideList[i],470,57*y+150,82,46)
 		hero_side[i]:SetTouchEnabled(0)
 		
-		-------Á½¸ö¸¨Öú¼¼ÄÜ
+		-------ä¸¤ä¸ªè¾…åŠ©æŠ€èƒ½
 		hero_assistB[i] = hero_side[i]:AddImage(path_equip.."bag_equip.BMP",61+4,17+4,18,18)
 		hero_assistA[i] = hero_side[i]:AddImage(path_equip.."bag_equip.BMP",48+4,29+4,18,18)
 		FR1[i] = hero_assistB[i]:AddImage(path_lolhero.."FRsummoner.BMP",-1,-1,20,20)
@@ -340,7 +340,7 @@ function InitMainGameStart_ui(wnd)
 		Enter[i]:SetTouchEnabled(0)
 	end
 
-	-- ¿É¹©Ñ¡ÔñµÄÓ¢ĞÛÁĞ±í
+	-- å¯ä¾›é€‰æ‹©çš„è‹±é›„åˆ—è¡¨
 	CanChoseHero_ui = CreateWindow(bgImg.id, 285, 0, 500, 500)
 	scissorwnd = CreateWindow(CanChoseHero_ui.id, 50, 120, 500, 500)
 	scissorwnd:SetTouchEnabled(1)
@@ -350,14 +350,14 @@ function InitMainGameStart_ui(wnd)
 		ICON_X[i] = 85*((i-1)%7)+15
 		ICON_Y[i] = 62*math.ceil(i/7)-34+24*(math.ceil(i/14)-1)
 		
-		-- Í·Ïñ
-		HERO_HEAD[i] = scissorwndBG:AddImage(path_lolhero.."hero.BMP",ICON_X[i],ICON_Y[i],74,38)---Ô­À´ÊÇ256£¬ÔİÊ±ĞŞ¸Ä³É148
-		-- ÕÚÕÖ
+		-- å¤´åƒ
+		HERO_HEAD[i] = scissorwndBG:AddImage(path_lolhero.."hero.BMP",ICON_X[i],ICON_Y[i],74,38)---åŸæ¥æ˜¯256ï¼Œæš‚æ—¶ä¿®æ”¹æˆ148
+		-- é®ç½©
 		HERO_HIDE[i] = HERO_HEAD[i]:AddImage(path_lolhero.."FR3.BMP",-4,-4,82,46)		
-		-- ±ß¿ò
+		-- è¾¹æ¡†
 		HERO_SIDE[i] = HERO_HEAD[i]:AddImage(path_lolhero.."FR5.BMP",-4,-4,82,46)
 		HERO_SIDE[i]:SetTouchEnabled(0)
-		-- Ãû×Ö
+		-- åå­—
 		HERO_NAME[i] = HERO_HEAD[i]:AddImage(path_lolhero.."nameBK.BMP",0,42,74,14)
 		HERO_NAMEFONT[i] = HERO_NAME[i]:AddFont("", 12, 8, 40, 0, 150, 14, 0xffbcc9ff)
 		
@@ -365,7 +365,7 @@ function InitMainGameStart_ui(wnd)
 			XClickPlaySound(UI_hero_index_new)			
 			WND_WAKEUP:SetVisible(0)
 			XSetHeroGrowthUpUiVisible(0, 0)
-			-- ±ê¼Çµã»÷µÄÍ¼Æ¬
+			-- æ ‡è®°ç‚¹å‡»çš„å›¾ç‰‡
 			if GetStepIndex_Tutorial()==9 then
 				XClickOkButtonTutorial()
 			end
@@ -386,7 +386,7 @@ function InitMainGameStart_ui(wnd)
 		end		
 	end
 	
-	-- »ÆÉ«¸ßÁÁ(Ö»»­Ò»¸ö£¬ÒÆ¶¯Î»ÖÃ)
+	-- é»„è‰²é«˜äº®(åªç”»ä¸€ä¸ªï¼Œç§»åŠ¨ä½ç½®)
 	-- HERO_CLICK = CanChoseHero_ui:AddImage(path_lolhero.."FR5.BMP",-4,-4,82,46)
 	-- HERO_CLICK:SetTouchEnabled(0)
 	-- HERO_CLICK:SetVisible(0)
@@ -411,14 +411,14 @@ function InitMainGameStart_ui(wnd)
 		end
 	end
 		
-	--Ó¢ĞÛËÑË÷
+	--è‹±é›„æœç´¢
 	HeroSearch_ui =  CreateWindow(HEROLISTWNDOPEN.id, -32, -118, 100, 50)	
 	heroSearchInputEdit = CreateWindow(HeroSearch_ui.id, 67, 118, 157, 28)
 	heronameInput = heroSearchInputEdit:AddEdit(path_lolhero.."search.BMP","","StartChoseHero_OnSearchEnter","",13,5,5,135,25,0xffffffff,0xff000000,0,"")
 	XEditSetMaxByteLength(heronameInput.id,20)
-	--heronameInput:SetDefaultFontText("ËÑË÷", 0xff303b4a)
+	--heronameInput:SetDefaultFontText("æœç´¢", 0xff303b4a)
 	
-	-- ÏÔÊ¾¹ö¶¯Ìõ
+	-- æ˜¾ç¤ºæ»šåŠ¨æ¡
 	hero_toggleImg = CanChoseHero_ui:AddImage(path_lolhero.."toggleBK_main.BMP",673,160,1,459)
 	hero_togglebtn = hero_toggleImg:AddButton(path_lolhero.."toggleBTN1_main.BMP",path_lolhero.."toggleBTN2_main.BMP",path_lolhero.."toggleBTN3_main.BMP",-2,0,5,142)
 	local ToggleT = hero_toggleImg:AddImage(path_lolhero.."TD1_main.BMP",-3,-9,7,9)
@@ -456,7 +456,7 @@ function InitMainGameStart_ui(wnd)
 		end
 	end
 		
-	-- ÉèÖÃ½çÃæ¿ÉÒÔ»¬¶¯
+	-- è®¾ç½®ç•Œé¢å¯ä»¥æ»‘åŠ¨
 	bgImg:EnableEvent(XE_MOUSEWHEEL)
 	bgImg.script[XE_MOUSEWHEEL] = function()
 		if g_game_start_ui:IsVisible() == false then
@@ -497,7 +497,7 @@ function InitMainGameStart_ui(wnd)
 		scissorwndBG:SetPosition(0,BGmove)		
 	end
 	
-	-- É¸Ñ¡	
+	-- ç­›é€‰	
 	for i=1,6 do
 		local px = 89*i-31
 		if i>3 then
@@ -546,7 +546,7 @@ function InitMainGameStart_ui(wnd)
 	end
 	
 	
-	-- ÅÅĞò
+	-- æ’åº
 	for i=1,7 do
 		local px = 89*i-31
 		
@@ -572,7 +572,7 @@ function InitMainGameStart_ui(wnd)
 		HEROSORTCHOSE[i]:SetVisible(0)	
 	end
 	
-	-- Ëæ»úÓ¢ĞÛ³ö»÷
+	-- éšæœºè‹±é›„å‡ºå‡»
 	BTN_random = CanChoseHero_ui:AddButton(path_lolhero.."random1_start.BMP", path_lolhero.."random2_start.BMP", path_lolhero.."random3_start.BMP",321,630,78,42)
 	BTN_random.script[XE_LBUP] = function()
 		XClickPlaySound(UI_click_new)
@@ -589,12 +589,12 @@ function InitMainGameStart_ui(wnd)
 end
 
 function InitMainGameStart_ui2(wnd)
-	---------Ó¢ĞÛÑ¡Ôñ½çÃæ
+	---------è‹±é›„é€‰æ‹©ç•Œé¢
 	bgImg:AddImage(path_lolhero.."talentsummonerbk_start.BMP",3000,155,472,250)
 	bgImg:AddImage(path_lolhero.."talentsummonerbk_start.BMP",3000,405,472,250)
 	
 	
-	-- ³ö»÷
+	-- å‡ºå‡»
 	BTN_start = bgImg:AddImage(path_lolhero.."readyEnter1_start.BMP",515, 739-OffsetY2_Start, 251, 59)
 	-- BTN_start:SetTransparent(0)
 	BTN_start.script[XE_LBUP] = function()
@@ -631,46 +631,46 @@ function InitMainGameStart_ui2(wnd)
 		end
 	end
 	
-	-- 265ÂÒ¶·ÎŞË« Ëæ»ú´ÎÊı
-	RandomCountUI = BTN_Random265:AddFont("Ëæ»úÓ¢ĞÛ( 0 )", 15, 8, 0, 0, 175, 50, 0xffffff)	
+	-- 265ä¹±æ–—æ— åŒ éšæœºæ¬¡æ•°
+	RandomCountUI = BTN_Random265:AddFont("éšæœºè‹±é›„( 0 )", 15, 8, 0, 0, 175, 50, 0xffffff)	
 	
-	-- »¨Ç®Ëæ»ú
+	-- èŠ±é’±éšæœº
 	BuyRandomCount = bgImg:AddImage(path_lolgame.."soloBK.BMP",431,404,417,272)
 	BuyRandomCount:SetImageFrameWidth(50)
 	BuyRandomCount:EnableBlackBackgroundTop(1)
-	BuyRandomCount:AddFont("ÊÇ·ñÏûºÄ1×êÊ¯ÖØĞÂËæ»úÓ¢ĞÛ£¿",  15, 0, 25, 45, 365, 100, 0xffffff)
-	BuyRandomCount:AddFont("¹ºÂò·½Ê½", 15, 8, 0, 0, 417, 272, 0xffffff)
+	BuyRandomCount:AddFont("æ˜¯å¦æ¶ˆè€—1é’»çŸ³é‡æ–°éšæœºè‹±é›„ï¼Ÿ",  15, 0, 25, 45, 365, 100, 0xffffff)
+	BuyRandomCount:AddFont("è´­ä¹°æ–¹å¼", 15, 8, 0, 0, 417, 272, 0xffffff)
 
 	BuyRandomCount:AddImage(path_lolcommon.."gold.BMP", 170, 170, 38, 38)
 	BuyRandomCount:AddFont("1", 15, 0, 208, 175, 100, 20, 0x7cceda)
 	
 	yes_buy = BuyRandomCount:AddButton(path_lolcommon .. "cancel1.BMP",path_lolcommon .. "cancel2.BMP",path_lolcommon .. "cancel3.BMP",46,250,130,43)	
-	yes_buy:AddFont("ÊÇ", 15,8,0,0,130,43,0xffffff)
+	yes_buy:AddFont("æ˜¯", 15,8,0,0,130,43,0xffffff)
 	yes_buy.script[XE_LBUP] = function()
 		XGameHeroRandom(1)
 		BuyRandomCount:SetVisible(0)
 	end
 	
 	no_buy = BuyRandomCount:AddButton(path_lolcommon .. "yes1.BMP",path_lolcommon.."yes2.BMP",path_lolcommon.."yes3.BMP",243,250,130,43)	
-	no_buy:AddFont("·ñ", 15,8,0,0,130,43,0xffffff)
+	no_buy:AddFont("å¦", 15,8,0,0,130,43,0xffffff)
 	no_buy.script[XE_LBUP] = function()
 		BuyRandomCount:SetVisible(0)
 	end
 	
 	BuyRandomCount:SetVisible(0)
 	
-	-- 355³Ô¼¦µØÍ¼ Ëæ»úÓ¢ĞÛ³Ø
-	-- 355Ëæ»úÓ¢ĞÛ
+	-- 355åƒé¸¡åœ°å›¾ éšæœºè‹±é›„æ± 
+	-- 355éšæœºè‹±é›„
 	BTN_Random355 = bgImg:AddButton(path_lolhero.."random1.BMP", path_lolhero.."random2.BMP", path_lolhero.."random3.BMP",230, 107, 175, 50)
-	-- Ëæ»ú´ÎÊı	
-	RandomPoolCountUI = BTN_Random355:AddFont("Ëæ»úÓ¢ĞÛ³Ø( 0 )", 15, 8, 0, 0, 175, 50, 0xffffff)
+	-- éšæœºæ¬¡æ•°	
+	RandomPoolCountUI = BTN_Random355:AddFont("éšæœºè‹±é›„æ± ( 0 )", 15, 8, 0, 0, 175, 50, 0xffffff)
 	BTN_Random355:SetVisible(0)
 	BTN_Random355.script[XE_LBUP] = function()
 		XClickPlaySound(UI_click_new)
 		if RandomPoolLeftCount == 0 then
 			BuyRandomCount355:SetVisible(1)
 			local n = 5 * (RandomPoolCount + 1)
-			fnt_RandomCostDesc:SetFontText("ÊÇ·ñÏûºÄ"..n.."¸ö×êÊ¯ÖØĞÂËæ»úÓ¢ĞÛ³Ø£¿", 0xffffff)
+			fnt_RandomCostDesc:SetFontText("æ˜¯å¦æ¶ˆè€—"..n.."ä¸ªé’»çŸ³é‡æ–°éšæœºè‹±é›„æ± ï¼Ÿ", 0xffffff)
 			fnt_RandomCost:SetFontText(""..n, 0x7cceda)
 		else
 			XGameHeroPoolRandom()
@@ -679,25 +679,25 @@ function InitMainGameStart_ui2(wnd)
 	BTN_Random355:SetVisible(0)
 	
 	
-	-- »¨Ç®Ëæ»ú
+	-- èŠ±é’±éšæœº
 	BuyRandomCount355 = bgImg:AddImage(path_lolgame.."soloBK.BMP",431,404,417,272)
 	BuyRandomCount355:SetImageFrameWidth(50)
 	BuyRandomCount355:EnableBlackBackgroundTop(1)
-	fnt_RandomCostDesc = BuyRandomCount355:AddFont("ÊÇ·ñÏûºÄ1×êÊ¯ÖØĞÂËæ»úÓ¢ĞÛ£¿", 15, 0, 25, 45, 365, 100, 0xffffff)
-	BuyRandomCount355:AddFont("¹ºÂò·½Ê½", 15, 8, 0, 0, 417, 272, 0xffffff)
+	fnt_RandomCostDesc = BuyRandomCount355:AddFont("æ˜¯å¦æ¶ˆè€—1é’»çŸ³é‡æ–°éšæœºè‹±é›„ï¼Ÿ", 15, 0, 25, 45, 365, 100, 0xffffff)
+	BuyRandomCount355:AddFont("è´­ä¹°æ–¹å¼", 15, 8, 0, 0, 417, 272, 0xffffff)
 
 	BuyRandomCount355:AddImage(path_lolcommon.."gold.BMP", 170, 170, 38, 38)
 	fnt_RandomCost = BuyRandomCount355:AddFont("1", 15, 0, 208, 175, 100, 20, 0x7cceda)
 	
 	yes_buy355 = BuyRandomCount355:AddButton(path_lolcommon .. "cancel1.BMP",path_lolcommon .. "cancel2.BMP",path_lolcommon .. "cancel3.BMP",46,250,130,43)	
-	yes_buy355:AddFont("ÊÇ", 15,8,0,0,130,43,0xffffff)
+	yes_buy355:AddFont("æ˜¯", 15,8,0,0,130,43,0xffffff)
 	yes_buy355.script[XE_LBUP] = function()
 		XGameHeroPoolRandom()
 		BuyRandomCount355:SetVisible(0)
 	end
 	
 	no_buy355 = BuyRandomCount355:AddButton(path_lolcommon .. "yes1.BMP",path_lolcommon.."yes2.BMP",path_lolcommon.."yes3.BMP",243,250,130,43)	
-	no_buy355:AddFont("·ñ", 15,8,0,0,130,43,0xffffff)
+	no_buy355:AddFont("å¦", 15,8,0,0,130,43,0xffffff)
 	no_buy355.script[XE_LBUP] = function()
 		BuyRandomCount355:SetVisible(0)
 	end
@@ -705,13 +705,13 @@ function InitMainGameStart_ui2(wnd)
 	BuyRandomCount355:SetVisible(0)
 	
 end
---yÑÛÆ¤·ô ĞŞ¸Äicon
+--yçœ¼çš®è‚¤ ä¿®æ”¹icon
 function SetSide3Pic(picPath,tip)	
 	Eye_ui.changeimage(picPath)
 	Eye_ui:SetImageTip(tip)
 end
 
--- °´ÕÕID²éÕÒÓ¢ĞÛÏêÏ¸ĞÅÏ¢·¢¸østart½çÃæ
+-- æŒ‰ç…§IDæŸ¥æ‰¾è‹±é›„è¯¦ç»†ä¿¡æ¯å‘ç»™startç•Œé¢
 function FindHeroInfoSendToStart(strPictureName,strName,HeroId,tip,index)	
 	local size = index+1	
 	
@@ -726,7 +726,7 @@ function FindHeroInfoSendToStart(strPictureName,strName,HeroId,tip,index)
 	hero_assistA[size]:SetVisible(1)
 	hero_assistB[size]:SetVisible(1)
 end
--- ¶ÓÓÑË­³ö»÷ÁË
+-- é˜Ÿå‹è°å‡ºå‡»äº†
 function Teammates_StartGame(index)
 	if index >0 and index <8 then
 		if index==1 then
@@ -737,7 +737,7 @@ function Teammates_StartGame(index)
 		Enter[index]:SetVisible(1)
 	end
 end
--- ÎÒ³ö»÷ÁË
+-- æˆ‘å‡ºå‡»äº†
 function IamReady_StartGame()
 	IamReady = 1
 	
@@ -762,12 +762,12 @@ function Hero_AssistSkill(assistA,assistB,tip1,tip2,index)
 	hero_assistA[size]:SetImageTip(tip1)
 	hero_assistB[size]:SetImageTip(tip2)
 end
--- ĞŞ¸ÄµÚÒ»¸öMaster¼¼ÄÜsummonerSkill.lua
+-- ä¿®æ”¹ç¬¬ä¸€ä¸ªMasteræŠ€èƒ½summonerSkill.lua
 function Start_SummonerSkillA(assistA,tip1)
 	BTN_SKILL1.changeimage(assistA)
 	BTN_SKILL1:SetImageTip(tip1)
 end
--- ĞŞ¸ÄµÚ¶ş¸öMaster¼¼ÄÜsummonerSkill.lua
+-- ä¿®æ”¹ç¬¬äºŒä¸ªMasteræŠ€èƒ½summonerSkill.lua
 function Start_SummonerSkillB(assistB,tip2)				
 	BTN_SKILL2.changeimage(assistB)
 	BTN_SKILL2:SetImageTip(tip2)
@@ -779,7 +779,7 @@ function Init_TeamplayerName(name,index)
 		hero_controlName[index+1]:SetFontText(name,hero_nameColor[index+1])
 	end
 end
--- ¸´Ô­µ½Æ¥Åä³É¹¦µÄ³õÊ¼»¯×´Ì¬
+-- å¤åŸåˆ°åŒ¹é…æˆåŠŸçš„åˆå§‹åŒ–çŠ¶æ€
 function RecoverStartList()	
 	--log("\nRecoverStartList   0")
 	for index,value in pairs(hero_head) do
@@ -792,10 +792,10 @@ function RecoverStartList()
 		Enter[index]:SetVisible(0)
 	end
 		
-	-- Ó¢ĞÛĞÅÏ¢±í
-	HeroInfo = {}					-- Çå³ı·¢ËÍÀ´µÄĞÅÏ¢
-	HeroInfo.strPictureName = {}	-- Ó¢ĞÛÍ·ÏñÂ·¾¶
-	HeroInfo.strName = {}			-- Ó¢ĞÛÃû³Æ
+	-- è‹±é›„ä¿¡æ¯è¡¨
+	HeroInfo = {}					-- æ¸…é™¤å‘é€æ¥çš„ä¿¡æ¯
+	HeroInfo.strPictureName = {}	-- è‹±é›„å¤´åƒè·¯å¾„
+	HeroInfo.strName = {}			-- è‹±é›„åç§°
 	HeroInfo.heroId = {}
 	HeroInfo.heroTip = {}
 
@@ -817,7 +817,7 @@ function RecoverStartList()
 		end
 	end
 	
-	--ÒÑ±»Ñ¡ÔñÓ¢ĞÛID
+	--å·²è¢«é€‰æ‹©è‹±é›„ID
 	BeChosedHeroList = {}
 	BeChosedHeroList.heroID = {}
 	
@@ -826,7 +826,7 @@ function RecoverStartList()
 end
 
 function GameStart_IsReady(ready)
-	if ready == 0 then	--ÉĞÎ´³ö»÷»Ö¸´¿Éµã»÷×´Ì¬		
+	if ready == 0 then	--å°šæœªå‡ºå‡»æ¢å¤å¯ç‚¹å‡»çŠ¶æ€		
 		BTN_change:SetEnabled(1)
 		BTN_LIST:SetEnabled(1)
 		LIST_BK:SetVisible(0)
@@ -839,7 +839,7 @@ function GameStart_IsReady(ready)
 		BTN_SKILL2:SetEnabled(1)
 		Eye_ui:SetEnabled(1)		
 		GameSkin_IsReady(1)
-	else				--³ö»÷
+	else				--å‡ºå‡»
 		BTN_change:SetEnabled(0)
 		BTN_LIST:SetEnabled(0)
 		LIST_BK:SetVisible(0)
@@ -862,7 +862,7 @@ function GameStart_IsReady(ready)
 end
 
 
--- ²»¿ÉÒÔµã»÷½çÃæ
+-- ä¸å¯ä»¥ç‚¹å‡»ç•Œé¢
 function RandomStartDisabled()
 	-- log("\nBTN_random:SetEnabled" .. 0)
 	BTN_random:SetEnabled(0)
@@ -978,10 +978,10 @@ function SetTutorialAllButtonEnable(IsEnable)
 end
 
 
--- ÏÔÊ¾·ûÎÄ
+-- æ˜¾ç¤ºç¬¦æ–‡
 function SetStart_DestMapID(mapid,talent,charm,common,eye)
 log("\nSetStart_DestMapID mapid = "..mapid)
-	-- ÊÇ·ñ¿ÉÒÔÑ¡ÔñÌì¸³
+	-- æ˜¯å¦å¯ä»¥é€‰æ‹©å¤©èµ‹
 	
 	Talent_ui:SetVisible(talent)
 	if bForbidCharm==0 then
@@ -1016,7 +1016,7 @@ function PVE_MaxFloorNum(Maxlevel,nowLevel)
 		pve_SummonerTalentList[dis]:SetPosition(40,dis*29-23)
 	end
 	
-	--Í¨ÊôĞÔ
+	--é€šå±æ€§
 	local level = Maxlevel
 	if level >0 then
 	    pve_Font_showAll:SetFontText(nowLevel,0xfec479)
@@ -1041,7 +1041,7 @@ function PVE_MaxFloorNum(Maxlevel,nowLevel)
 end
 
 function PVE_SetBaseInfo(pa,ma,da)
-    --Í¨ÊôĞÔ
+    --é€šå±æ€§
 	Phyattack:SetFontText( pa, 0x45b1c9)
 	Magattack:SetFontText( ma, 0x45b1c9)
 	local info = string.format("%.2f",da).."%"
@@ -1083,7 +1083,7 @@ end
 
 
 
---ÉèÖÃÏÔÊ¾
+--è®¾ç½®æ˜¾ç¤º
 function SetGameStartIsVisible(flag) 
 	if g_game_start_ui ~= nil then
 		if flag == 1 and g_game_start_ui:IsVisible() == false then
@@ -1093,7 +1093,7 @@ function SetGameStartIsVisible(flag)
 			XCheckifShowBLoodSkinBtn()
 			
 			SetFourpartUIVisiable(10)
-			-- ÉèÖÃÆ¤·ô¿òÊÇ·ñÏÔÊ¾ºÍÎ»ÖÃ
+			-- è®¾ç½®çš®è‚¤æ¡†æ˜¯å¦æ˜¾ç¤ºå’Œä½ç½®
 			SetSkinWindowPos(1)
 			SetGameSkinFrameIsVisible(1)
 			SetGameTalentFrameIsVisible(1)
@@ -1196,9 +1196,9 @@ function SetRandomCount(count)
 	RandomCount = count
 	if BTN_Random265 ~= nil then
 		if count == 0 then
-			RandomCountUI:SetFontText("Ëæ»úÓ¢ĞÛ",0xffffff)
+			RandomCountUI:SetFontText("éšæœºè‹±é›„",0xffffff)
 		else
-			RandomCountUI:SetFontText("Ëæ»úÓ¢ĞÛ( "..count.." )",0xffffff)
+			RandomCountUI:SetFontText("éšæœºè‹±é›„( "..count.." )",0xffffff)
 		end
 	end
 end
@@ -1209,9 +1209,9 @@ function SetRandomPoolCount(leftcount, count)
 	RandomPoolCount = count
 	if RandomPoolCountUI ~= nil then
 		if leftcount == 0 then
-			RandomPoolCountUI:SetFontText("Ëæ»úÓ¢ĞÛ³Ø",0xffffff)
+			RandomPoolCountUI:SetFontText("éšæœºè‹±é›„æ± ",0xffffff)
 		else
-			RandomPoolCountUI:SetFontText("Ëæ»úÓ¢ĞÛ³Ø( "..leftcount.." )",0xffffff)
+			RandomPoolCountUI:SetFontText("éšæœºè‹±é›„æ± ( "..leftcount.." )",0xffffff)
 		end
 	end
 end
@@ -1245,10 +1245,10 @@ function ReturnToCharmChose(i)
 	end
 end
 
--- ÉèÖÃ·ûÎÄÒ³Name
+-- è®¾ç½®ç¬¦æ–‡é¡µName
 function ClearStart_CharmNameList()
 	CurShowCharmIndex = 1
-	BTN_CharmFont = {"·ûÎÄÒ³1","·ûÎÄÒ³2","·ûÎÄÒ³3","·ûÎÄÒ³4","·ûÎÄÒ³5","·ûÎÄÒ³6","·ûÎÄÒ³7","·ûÎÄÒ³8"}
+	BTN_CharmFont = {"ç¬¦æ–‡é¡µ1","ç¬¦æ–‡é¡µ2","ç¬¦æ–‡é¡µ3","ç¬¦æ–‡é¡µ4","ç¬¦æ–‡é¡µ5","ç¬¦æ–‡é¡µ6","ç¬¦æ–‡é¡µ7","ç¬¦æ–‡é¡µ8"}
 	
 	for i = 1, 8 do
 		SummonerCharmList[i]:SetFontText(BTN_CharmFont[i], 0xfec479)
@@ -1278,13 +1278,13 @@ end
 
 
 
---ĞÂUI
+--æ–°UI
 
--- Ñ¡ÔñÓ¢ĞÛĞÅÏ¢±í
+-- é€‰æ‹©è‹±é›„ä¿¡æ¯è¡¨
 function ClearChoseHeroInfo()	
-	HeroList = {}					-- Çå³ı·¢ËÍÀ´µÄĞÅÏ¢
-	HeroList.strPictureName = {}	-- Ó¢ĞÛÍ·ÏñÂ·¾¶
-	HeroList.strName = {}			-- Ó¢ĞÛÃû³Æ
+	HeroList = {}					-- æ¸…é™¤å‘é€æ¥çš„ä¿¡æ¯
+	HeroList.strPictureName = {}	-- è‹±é›„å¤´åƒè·¯å¾„
+	HeroList.strName = {}			-- è‹±é›„åç§°
 	HeroList.heroId = {}
 	HeroList.heroTip = {}
 	HeroList.IsFavorite = {}
@@ -1300,7 +1300,7 @@ function ClearChoseHeroInfo()
 	end		
 end	
 
--- »ñÈ¡¿ªÊ¼Ñ¡ÈËµÄÊı¾İ
+-- è·å–å¼€å§‹é€‰äººçš„æ•°æ®
 function SendChoseHeroDataToLua(strPictureName,strName,heroId,tip,IsFavorite,iTaskWord)
 
 	local size = #HeroList.strName+1
@@ -1325,14 +1325,14 @@ function SendChoseHeroDataOver()
 end
 
 
--- °Ñ×Ô¼ºÓµÓĞµÄ±»Ñ¡ÔñµÄÓ¢ĞÛ½ûÖ¹µã»÷
+-- æŠŠè‡ªå·±æ‹¥æœ‰çš„è¢«é€‰æ‹©çš„è‹±é›„ç¦æ­¢ç‚¹å‡»
 function ChoseHero_EnableHeroId(bChosedId,EnabledFlag)
 	if XGetMapId()==BANPICK_WAITROOM then
 		BanPickChoseHero_EnableHeroId(bChosedId,EnabledFlag)
 	elseif XGetMapId()==RANK_WAITROOM then
 		RankChoseHero_EnableHeroId(bChosedId,EnabledFlag)
 	else
-		--ÒÑ±»Ñ¡ÔñÓ¢ĞÛID	
+		--å·²è¢«é€‰æ‹©è‹±é›„ID	
 		local size = #BeChosedHeroList.heroID+1	
 		if EnabledFlag==0 then
 			BeChosedHeroList.heroID[size] = bChosedId
@@ -1344,7 +1344,7 @@ function ChoseHero_EnableHeroId(bChosedId,EnabledFlag)
 			end
 		end
 		
-		--ÕÚÕÖ×´Ì¬
+		--é®ç½©çŠ¶æ€
 		for i=1, MAXHERO do
 			if HeroList.heroId[i] == bChosedId then
 				HERO_HIDE[i]:SetVisible(1-EnabledFlag)
@@ -1358,7 +1358,7 @@ function Chose_HeroClick()
 	-- HERO_CLICK:SetVisible(0)
 end
 
--- ¿ìËÙµÇÂ¼ÔòÎŞ·¨¾õĞÑ
+-- å¿«é€Ÿç™»å½•åˆ™æ— æ³•è§‰é†’
 function SetWakeUpButtonEnable(flag)	
 	BTN_grow:SetEnabled(flag)
 end
@@ -1374,7 +1374,7 @@ function AutoChoseHero_DeBug()
 	XGameHeroChoseId(HeroList.heroId[1])
 end
 
--- ËÑË÷Ó¢ĞÛÃû³Æ·¢ËÍº¯Êıµ½C++
+-- æœç´¢è‹±é›„åç§°å‘é€å‡½æ•°åˆ°C++
 function StartChoseHero_OnSearchEnter()
 	XSearchStartChoseHeroName(heronameInput:GetEdit(),index_showAll,index_oftenUse)
 end
@@ -1418,7 +1418,7 @@ end
 
 
 
---ĞÂUI
+--æ–°UI
 local TalentSummonerBK = nil
 
 function InitGame_TalentFrame(wnd, bisopen)
@@ -1429,9 +1429,9 @@ end
 function InitMainGame_TalentFrame(wnd)		
 	TalentSummonerBK = CreateWindow( wnd.id, 0,0,472,250)
 	
-	---------¾õĞÑ
+	---------è§‰é†’
 	BTN_grow = TalentSummonerBK:AddButton( path_lolhero .. "FightWakeUpN.BMP", path_lolhero .. "FightWakeUpM.BMP", path_lolhero .. "FightWakeUpC.BMP", 367, 9, 78, 30)
-	BTN_grow:AddFont("¾õĞÑ",18,8,0,0,78,30,0xbeb5ee)
+	BTN_grow:AddFont("è§‰é†’",18,8,0,0,78,30,0xbeb5ee)
 	BTN_grow.script[XE_LBUP] = function()
 		XClickPlaySound(UI_click_new)
 		
@@ -1449,7 +1449,7 @@ function InitMainGame_TalentFrame(wnd)
 	
 
 	
-	-----------------Í¨ÓÃ¼¼ÄÜ
+	-----------------é€šç”¨æŠ€èƒ½
 	Common_BK = CreateWindow(TalentSummonerBK.id,28,116,70,18)
 	
 	Common_BK:AddImage(path_lolhero.."line.BMP",3000,29,438,1)
@@ -1461,19 +1461,19 @@ function InitMainGame_TalentFrame(wnd)
 	Common_pve = CreateWindow(TalentSummonerBK.id, 0,125,472,125)
 	Common_pve:AddFont(" ",18,0,28,-9,100,20,0xceaf61)
 	
-	Common_pve:AddFont("ÎïÀí¹¥»÷£º",15,0,106,37,200,20,0xceaf61)
-	Common_pve:AddFont("·¨ÊõÇ¿¶È£º",15,0,106,61,200,20,0xceaf61)
-	Common_pve:AddFont("ÉËº¦¼ÓÉî£º",15,0,284,47,200,20,0xceaf61)
+	Common_pve:AddFont("ç‰©ç†æ”»å‡»ï¼š",15,0,106,37,200,20,0xceaf61)
+	Common_pve:AddFont("æ³•æœ¯å¼ºåº¦ï¼š",15,0,106,61,200,20,0xceaf61)
+	Common_pve:AddFont("ä¼¤å®³åŠ æ·±ï¼š",15,0,284,47,200,20,0xceaf61)
 	
 	Phyattack = Common_pve:AddFont("10000",15,0,106+80,37,200,20,0x45b1c9)
 	Magattack = Common_pve:AddFont("10087",15,0,106+80,61,200,20,0x45b1c9)
 	Dmgadd = Common_pve:AddFont("150%",15,0,284+80,47,200,20,0x45b1c9)
 	
 	
-	------¸¨Öú¼¼ÄÜÍ¼Æ¬
+	------è¾…åŠ©æŠ€èƒ½å›¾ç‰‡
 	BTN_SKILL1 = Common_ui:AddImage(path_equip.."bag_equip.BMP",-740,440,48,48)
 	BTN_SKILL2 = Common_ui:AddImage(path_equip.."bag_equip.BMP",-685,440,48,48)
-	------Á½¸ö¸¨Öú¼¼ÄÜ
+	------ä¸¤ä¸ªè¾…åŠ©æŠ€èƒ½
 	local SIDE1 = BTN_SKILL1:AddImage(path_lolhero.."summonerSide_start.BMP",-2,-2,52,52)
 	SIDE1:SetTouchEnabled(0)
 	local SIDE2 = BTN_SKILL2:AddImage(path_lolhero.."summonerSide_start.BMP",-2,-2,52,52)
@@ -1519,7 +1519,7 @@ function InitMainGame_TalentFrame(wnd)
 	end
 	
 	
-	-- Ìì¸³×¨¾«
+	-- å¤©èµ‹ä¸“ç²¾
 	Talent_BK = CreateWindow(TalentSummonerBK.id,28,16,70,18)	
 	Talent_BK:AddImage(path_lolhero.."line.BMP",3000,29,438,1)
 	
@@ -1527,12 +1527,12 @@ function InitMainGame_TalentFrame(wnd)
 	Talent_ui:AddFont(" ",18,0,28,16,100,20,0xffbcc9ff)
 	
 	Talent_pve = CreateWindow(TalentSummonerBK.id, 0,0,472,125)
-	Talent_pve:AddFont("µ±Ç°¹Ø¿¨",18,0,28,16,100,20,0xceaf61)
+	Talent_pve:AddFont("å½“å‰å…³å¡",18,0,28,16,100,20,0xceaf61)
 
 	Charm_ui = CreateWindow(TalentSummonerBK.id, 236,0,472,125)
 	Charm_ui:AddFont(" ",18,0,28,16,100,20,0xffbcc9ff)
 
-	-----------PVEÑ¡²ãÊı---¿ªÊ¼
+	-----------PVEé€‰å±‚æ•°---å¼€å§‹
 	pve_BTN_LIST = Talent_pve:AddTwoButton(path_lolhero.."talentlist1_start.BMP", path_lolhero.."talentlist2_start.BMP", path_lolhero.."talentlist1_start.BMP",143,62,194,32)
 	pve_Font_showAll = pve_BTN_LIST:AddFont(pve_BTN_TalentFont[1],15,0,20,5,200,15,0xfec479)
 	
@@ -1545,7 +1545,7 @@ function InitMainGame_TalentFrame(wnd)
 		pve_SummonerTalentList[dis] = pve_LIST_BK:AddFont(pve_BTN_TalentFont[dis],15,0,40,dis*29-23,184,28,0xfec479)
 		pve_BTN_Talent[dis]:SetTransparent(0)
 		pve_BTN_Talent[dis]:SetTouchEnabled(0)
-		-- Êó±ê»¬¹ı
+		-- é¼ æ ‡æ»‘è¿‡
 		pve_BTN_Talent[dis].script[XE_ONHOVER] = function()
 			if pve_LIST_BK:IsVisible() == true then
 				pve_BTN_Talent[dis]:SetTransparent(1)
@@ -1587,14 +1587,14 @@ function InitMainGame_TalentFrame(wnd)
 		end
 	end
 	
-	-----------PVEÑ¡²ãÊı---½áÊø
+	-----------PVEé€‰å±‚æ•°---ç»“æŸ
 	
 	BTN_change = Talent_ui:AddButton(path_lolhero.."changeBtn1_start.BMP",path_lolhero.."changeBtn2_start.BMP",path_lolhero.."changeBtn1_start.BMP",-732,0,30,30)
 	BTN_change.script[XE_LBUP] = function()
 		XClickPlaySound(UI_click_new)
 		local mapid = XGetMapId()
 		
-		-- µØÍ¼ºÅµÍÓÚ100µÄ²»ÊÇÔÚ³¡ÄÚ
+		-- åœ°å›¾å·ä½äº100çš„ä¸æ˜¯åœ¨åœºå†…
 		if mapid <100 then
 			if(bForbidNewTalent>0)then
 				XSelSummonerTalent_gamestart( SelTalentIndex )
@@ -1606,9 +1606,9 @@ function InitMainGame_TalentFrame(wnd)
 		end
 	end
 	
-	-- ÏÔÊ¾È«²¿ÏÂÀ­±³¾°¿ò
+	-- æ˜¾ç¤ºå…¨éƒ¨ä¸‹æ‹‰èƒŒæ™¯æ¡†
 	BTN_LIST = Talent_ui:AddTwoButton(path_lolhero.."talentlist1_start.BMP", path_lolhero.."talentlist2_start.BMP", path_lolhero.."talentlist1_start.BMP",-697,0,194,32)
-	Font_showAll = BTN_LIST:AddFont("Ìì¸³Ò³1",15,0,20,5,200,15,0xfec479)
+	Font_showAll = BTN_LIST:AddFont("å¤©èµ‹é¡µ1",15,0,20,5,200,15,0xfec479)
 	
 	LIST_BK = Talent_ui:AddImage(path_lolhero.."talentlistBK_start.BMP",-690,35,186,290)
 	LIST_BK:SetImageFrameWidth(10)
@@ -1619,7 +1619,7 @@ function InitMainGame_TalentFrame(wnd)
 		SummonerTalentList[dis] = LIST_BK:AddFont(BTN_TalentFont[dis],15,0,40,dis*29-23,184,28,0xfec479)
 		BTN_Talent[dis]:SetTransparent(0)
 		BTN_Talent[dis]:SetTouchEnabled(0)
-		-- Êó±ê»¬¹ı
+		-- é¼ æ ‡æ»‘è¿‡
 		BTN_Talent[dis].script[XE_ONHOVER] = function()
 			if LIST_BK:IsVisible() == true then
 				BTN_Talent[dis]:SetTransparent(1)
@@ -1668,13 +1668,13 @@ function InitMainGame_TalentFrame(wnd)
 	end
 	
 	
-	------------·ûÎÄ	
+	------------ç¬¦æ–‡	
 	BTN_CHARM = Charm_ui:AddButton(path_lolhero.."changeBtn1_start.BMP",path_lolhero.."changeBtn2_start.BMP",path_lolhero.."changeBtn1_start.BMP",-770,-38,30,30)
 	BTN_CHARM.script[XE_LBUP] = function()
 		XClickPlaySound(UI_click_new)
 		local mapid = XGetMapId()
 		
-		if mapid<50 and mapid>1 then -- ´ú±íÑ¡ÈË½çÃæ
+		if mapid<50 and mapid>1 then -- ä»£è¡¨é€‰äººç•Œé¢
 			SetCharm_InsideIsVisible(1)
 						
 			SelCharmIndex  =  math.max(1,SelCharmIndex)
@@ -1688,9 +1688,9 @@ function InitMainGame_TalentFrame(wnd)
 			end
 		end
 	end
-	-- ÏÔÊ¾È«²¿ÏÂÀ­±³¾°¿ò
+	-- æ˜¾ç¤ºå…¨éƒ¨ä¸‹æ‹‰èƒŒæ™¯æ¡†
 	BTN_CHARMLIST = Charm_ui:AddTwoButton(path_lolhero.."talentlist1_start.BMP", path_lolhero.."talentlist2_start.BMP", path_lolhero.."talentlist1_start.BMP",283,-40,194,32)
-	CharmFont_showAll = BTN_CHARMLIST:AddFont("·ûÎÄÒ³1",15,0,20,5,200,15,0xfec479)
+	CharmFont_showAll = BTN_CHARMLIST:AddFont("ç¬¦æ–‡é¡µ1",15,0,20,5,200,15,0xfec479)
 	
 	CHARMLIST_BK = Charm_ui:AddImage(path_lolhero.."talentlistBK_start.BMP",285,0,186,290)
 	CHARMLIST_BK:SetImageFrameWidth(10)
@@ -1699,14 +1699,14 @@ function InitMainGame_TalentFrame(wnd)
 	CHARMLIST_BK.script[XE_MOUSEWHEEL] = function()
 		local updown  = XGetMsgParam0()
 		if updown>0 then
-			-- ÉÏ
+			-- ä¸Š
 			if CurShowCharmIndex<=1 then
 				CurShowCharmIndex = 1
 			else
 				CurShowCharmIndex = CurShowCharmIndex-1
 			end
 		elseif updown<0 then
-			-- ÏÂ
+			-- ä¸‹
 			if CurShowCharmIndex >= #BTN_CharmFont then
 				CurShowCharmIndex = #BTN_CharmFont
 			else
@@ -1725,7 +1725,7 @@ function InitMainGame_TalentFrame(wnd)
 		SummonerCharmList[dis] = CHARMLIST_BK:AddFont(BTN_CharmFont[dis],15,0,40,dis*29-23,184,28,0xfec479)
 		BTN_Charm[dis]:SetTransparent(0)
 		BTN_Charm[dis]:SetTouchEnabled(0)
-		-- Êó±ê»¬¹ı
+		-- é¼ æ ‡æ»‘è¿‡
 		BTN_Charm[dis].script[XE_ONHOVER] = function()
 			if CHARMLIST_BK:IsVisible() == true then
 				if (dis+CurShowCharmIndex-1) <= #BTN_CharmFont then
@@ -1791,15 +1791,15 @@ function SetGameStart_WakeUpIsVisible(flag)
 end
 
 ----------------------------------------------------------------------------------------------------------------
-function initBloodskinChooseFrame(wnd)--ÏÂÀ­´°¿Ú
+function initBloodskinChooseFrame(wnd)--ä¸‹æ‹‰çª—å£
 	BloodSkinChooseFrame = wnd:AddImage(path_lolplayerinfo .. "bloodlistbg.BMP",-743,273,473,333)
 	BloodSkinChooseFrame:SetVisible(0)
 	BloodSkinChooseFrame:EnableBlackBackgroundTop(1)
-	BloodSkinChooseFrame:AddFont("ÑªÌõÆ¤·ô", 18, 0, 210, 15, 100, 40, 0x9a9ab2)
+	BloodSkinChooseFrame:AddFont("è¡€æ¡çš®è‚¤", 18, 0, 210, 15, 100, 40, 0x9a9ab2)
 	for index = 1,3 do
 		BloodSkinBack[index] = BloodSkinChooseFrame:AddImage(path_lolplayerinfo.."talbloodlist.BMP",38,62+(index-1)*72,400,68)
 		BloodSkinBack[index]:SetTouchEnabled(1)
-		BloodSkinName[index] = BloodSkinBack[index]:AddFont("ÑªÌõ",15,0,12,21,85,15,0xffe0bf67)
+		BloodSkinName[index] = BloodSkinBack[index]:AddFont("è¡€æ¡",15,0,12,21,85,15,0xffe0bf67)
 		BloodSkinName[index]:SetTouchEnabled(0)
 		BloodSkinpic[index] = BloodSkinBack[index]:AddImage("../UI/Common/Blood/moren.png", 90,2, 219, 66)
 		BloodSkinpic[index]:SetTouchEnabled(0)
@@ -1916,7 +1916,7 @@ end
 ----------------------------------------------------------------------------------------------------------------
 
 
---ÉèÖÃÏÔÊ¾
+--è®¾ç½®æ˜¾ç¤º
 function SetGameTalentFrameIsVisible(flag) 
 	if g_game_TalentFrame_ui ~= nil then
 		if flag == 1 and g_game_TalentFrame_ui:IsVisible() == false then
