@@ -254,7 +254,7 @@ function InitMainGame_hall(wnd)
 	MainHall_BK = wnd:AddImage(path_MailHallSkin,0,0,1280,800)
 	MainHall_Effect = wnd:AddEffect(Dynamic_BG,0,0,1280,800)
 	btn_taaa = wnd:AddImage("../data/wallpaper/20.bmp",0,0,1280,800)
-	local backgroundeffect = wnd:AddEffect("../Data/Magic/Common/UI/changwai/183Skin1/183Skin1_od.x",0,0,1280,800)
+	local backgroundeffect = wnd:AddEffect("../Data/Magic/Common/UI/changwai/183Skin1/183Skin1_od.x",-110,-55,1500,910)
 	backgroundeffect:SetVisible(0)
     --local bk_T = wnd:AddButton("../data/wallpaper/l.bmp","../data/wallpaper/l1.bmp","../data/wallpaper/l2.bmp",189,730-OffsetY1,69,70)
     --local time = 1
@@ -969,7 +969,7 @@ function InitMainGame_hall(wnd)
 	end
 
 	yinghuashu.script[XE_LBUP] = function()
-		if liuguangdianji:IsVisible() then
+		if yinghuashudianji:IsVisible() then
 			yinghuashudianji:SetVisible(0)
 			backgroundeffect:SetVisible(0)
 		else
@@ -983,7 +983,7 @@ function InitMainGame_hall(wnd)
 	end
 
 	luoxue.script[XE_LBUP] = function()
-		if liuguangdianji:IsVisible() then
+		if luoxuedianji:IsVisible() then
 			luoxuedianji:SetVisible(0)
 			backgroundeffect:SetVisible(0)
 		else
@@ -997,7 +997,7 @@ function InitMainGame_hall(wnd)
 	end
 
 	yudi.script[XE_LBUP] = function()
-		if liuguangdianji:IsVisible() then
+		if yudidianji:IsVisible() then
 			yudidianji:SetVisible(0)
 			backgroundeffect:SetVisible(0)
 		else
@@ -1010,17 +1010,31 @@ function InitMainGame_hall(wnd)
 		end
 	end
 
+	btn_taaa.script[XE_ONUPDATE] = function()
+		if pianyidianji:IsVisible() then
+			currentMouseX,currentMouseY = hero_model:GetLocalMousePosition()
+			if currentMouseX < 220 then
+				imagex = currentMouseX /2
+			end
+			if currentMouseY < 110 then
+				imagey = currentMouseY/2
+			end
+			if currentMouseX > 1060 then
+				imagex = - ((currentMouseX -1060)/2)
+			end
+			if currentMouseX > 690 then
+				imagex = - ((currentMousey -690)/2)
+			end
+			btn_aaa:SetPosition(-110 + imagex,-55 + imagey)
+		end
+	end
+
 	pianyi.script[XE_LBUP] = function()
-		if liuguangdianji:IsVisible() then
+		if pianyidianji:IsVisible() then
 			pianyidianji:SetVisible(0)
-			backgroundeffect:SetVisible(0)
+			btn_aaa:SetPosition(-110,-55)
 		else
-			liuguangdianji:SetVisible(0)
-			yinghuashudianji:SetVisible(0)
-			luoxuedianji:SetVisible(0)
-			yudidianji:SetVisible(0)
 			pianyidianji:SetVisible(1)
-			backgroundeffect:SetVisible(1)
 		end
 	end
     
