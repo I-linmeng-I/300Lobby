@@ -255,6 +255,7 @@ function InitMainGame_hall(wnd)
 	MainHall_Effect = wnd:AddEffect(Dynamic_BG,0,0,1280,800)
 	btn_taaa = wnd:AddImage("../data/wallpaper/20.bmp",0,0,1280,800)
 	local backgroundeffect = wnd:AddEffect("../Data/Magic/Common/UI/changwai/183Skin1/183Skin1_od.x",0,0,1280,800)
+	backgroundeffect:SetVisible(0)
     --local bk_T = wnd:AddButton("../data/wallpaper/l.bmp","../data/wallpaper/l1.bmp","../data/wallpaper/l2.bmp",189,730-OffsetY1,69,70)
     --local time = 1
     --bk_T.script[XE_LBUP] = function()
@@ -949,7 +950,7 @@ function InitMainGame_hall(wnd)
     pianyi:AddFont("Êó±êÆ«ÒÆ",15,0,24,0,500,20,0xffffff)
 	liuguangdianji:SetVisible(0)
 	liuguang.script[XE_LBUP] = function()
-		if liuguangdianji:IsVisible() == false then
+		if liuguangdianji:IsVisible() then
 			liuguangdianji:SetVisible(0)
 			backgroundeffect:SetVisible(0)
 		else
@@ -964,7 +965,7 @@ function InitMainGame_hall(wnd)
 	end
 
 	yinghuashu.script[XE_LBUP] = function()
-		if liuguangdianji:IsVisible() == false then
+		if liuguangdianji:IsVisible() then
 			yinghuashudianji:SetVisible(0)
 			backgroundeffect:SetVisible(0)
 		else
@@ -978,7 +979,7 @@ function InitMainGame_hall(wnd)
 	end
 
 	luoxue.script[XE_LBUP] = function()
-		if liuguangdianji:IsVisible() == false then
+		if liuguangdianji:IsVisible() then
 			luoxuedianji:SetVisible(0)
 			backgroundeffect:SetVisible(0)
 		else
@@ -992,7 +993,7 @@ function InitMainGame_hall(wnd)
 	end
 
 	yudi.script[XE_LBUP] = function()
-		if liuguangdianji:IsVisible() == false then
+		if liuguangdianji:IsVisible() then
 			yudidianji:SetVisible(0)
 			backgroundeffect:SetVisible(0)
 		else
@@ -1006,7 +1007,7 @@ function InitMainGame_hall(wnd)
 	end
 
 	pianyi.script[XE_LBUP] = function()
-		if liuguangdianji:IsVisible() == false then
+		if liuguangdianji:IsVisible() then
 			pianyidianji:SetVisible(0)
 			backgroundeffect:SetVisible(0)
 		else
