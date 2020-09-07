@@ -953,68 +953,68 @@ function InitMainGame_hall(wnd)
 			liuguangdianji:SetVisible(1)
 			backgroundeffect:SetVisible(0)
 		else
-			liuguangdianji:SetVisible(1)
-			yinghuashudianji:SetVisible(0)
-			luoxuedianji:SetVisible(0)
-			yudidianji:SetVisible(0)
-			pianyidianji:SetVisible(0)
-			backgroundeffect:SetVisible(1)
+			liuguangdianji:SetVisible(0)
+			yinghuashudianji:SetVisible(1)
+			luoxuedianji:SetVisible(1)
+			yudidianji:SetVisible(1)
+			pianyidianji:SetVisible(1)
+			backgroundeffect:SetVisible(0)
 			backgroundeffect:ChangeEffect("../Data/Magic/Common/UI/changwai/183Skin1/183Skin1_od.x")
 		end
 	end
 
 	yinghuashu.script[XE_LBUP] = function()
 		if liuguangdianji:IsVisible() == false then
-			yinghuashudianji:SetVisible(0)
+			yinghuashudianji:SetVisible(1)
 			backgroundeffect:SetVisible(0)
 		else
-			liuguangdianji:SetVisible(0)
-			yinghuashudianji:SetVisible(1)
-			luoxuedianji:SetVisible(0)
-			yudidianji:SetVisible(0)
-			pianyidianji:SetVisible(0)
+			liuguangdianji:SetVisible(1)
+			yinghuashudianji:SetVisible(0)
+			luoxuedianji:SetVisible(1)
+			yudidianji:SetVisible(1)
+			pianyidianji:SetVisible(1)
 			backgroundeffect:SetVisible(1)
 		end
 	end
 
 	luoxue.script[XE_LBUP] = function()
 		if liuguangdianji:IsVisible() == false then
-			luoxuedianji:SetVisible(0)
+			luoxuedianji:SetVisible(1)
 			backgroundeffect:SetVisible(0)
 		else
-			liuguangdianji:SetVisible(0)
-			yinghuashudianji:SetVisible(0)
-			luoxuedianji:SetVisible(1)
-			yudidianji:SetVisible(0)
-			pianyidianji:SetVisible(0)
+			liuguangdianji:SetVisible(1)
+			yinghuashudianji:SetVisible(1)
+			luoxuedianji:SetVisible(0)
+			yudidianji:SetVisible(1)
+			pianyidianji:SetVisible(1)
 			backgroundeffect:SetVisible(1)
 		end
 	end
 
 	yudi.script[XE_LBUP] = function()
 		if liuguangdianji:IsVisible() == false then
-			yudidianji:SetVisible(0)
+			yudidianji:SetVisible(1)
 			backgroundeffect:SetVisible(0)
 		else
-			liuguangdianji:SetVisible(0)
-			yinghuashudianji:SetVisible(0)
-			luoxuedianji:SetVisible(0)
-			yudidianji:SetVisible(1)
-			pianyidianji:SetVisible(0)
+			liuguangdianji:SetVisible(1)
+			yinghuashudianji:SetVisible(1)
+			luoxuedianji:SetVisible(1)
+			yudidianji:SetVisible(0)
+			pianyidianji:SetVisible(1)
 			backgroundeffect:SetVisible(1)
 		end
 	end
 
 	pianyi.script[XE_LBUP] = function()
 		if liuguangdianji:IsVisible() == false then
-			pianyidianji:SetVisible(0)
+			pianyidianji:SetVisible(1)
 			backgroundeffect:SetVisible(0)
 		else
-			liuguangdianji:SetVisible(0)
-			yinghuashudianji:SetVisible(0)
-			luoxuedianji:SetVisible(0)
-			yudidianji:SetVisible(0)
-			pianyidianji:SetVisible(1)
+			liuguangdianji:SetVisible(1)
+			yinghuashudianji:SetVisible(1)
+			luoxuedianji:SetVisible(1)
+			yudidianji:SetVisible(1)
+			pianyidianji:SetVisible(0)
 			backgroundeffect:SetVisible(1)
 		end
 	end
