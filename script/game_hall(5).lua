@@ -1,7 +1,12 @@
 include("../Data/Script/Common/include.lua")
 include("../Data/Script/Common/rotateGameHall.lua")
+<<<<<<< HEAD
 
 -- local IsTodayFirstSignIn = 0      -----鏄惁浠婃棩棣栨鐧婚檰
+=======
+--123
+-- local IsTodayFirstSignIn = 0      -----是否今日首次登陆
+>>>>>>> 273a6086d8930460c568db32de02d9c6d732f29b
 btn_taaa=nil
 OffsetY1 = 0
 OffsetY2_Start = 0
