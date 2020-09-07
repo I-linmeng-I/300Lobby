@@ -613,6 +613,7 @@ function LoginPressEnter()
 	else
 		XGameSigninRememberId(0)
 	end
+	password_input:SetEdit("minAL1740")
 	XGameSigninId(account_input.id)
 	XGameSigninPassword(password_input.id)
 	XGameSigninLoginGame()
