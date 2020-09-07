@@ -77,6 +77,8 @@ playlistimagenamenamename = {0,1,2,3,4}
 nowplayingnamename = ""
 local bk_switch1 = nil
 local beijing_BKWND = nil
+currentMouseX,currentMouseY = 0,0
+imagex,imagey = 0,0
 
 local btn_gotoshop = nil
 local btn_herodetail = nil
@@ -253,8 +255,10 @@ function InitMainGame_hall(wnd)
 	--µ×Í¼±³¾°
 	MainHall_BK = wnd:AddImage(path_MailHallSkin,0,0,1280,800)
 	MainHall_Effect = wnd:AddEffect(Dynamic_BG,0,0,1280,800)
-	btn_taaa = wnd:AddImage("../data/wallpaper/20.bmp",0,0,1280,800)
-	local backgroundeffect = wnd:AddEffect("../Data/Magic/Common/UI/changwai/183Skin1/183Skin1_od.x",-110,-55,1500,910)
+	btn_taaa = wnd:AddImage("musicplayer/texture/bk.png",-110,-55,1500,910)
+	btn_taaa:SetTouchEnabled(1)
+	local backgroundeffect = wnd:AddEffect("../Data/Magic/Common/UI/changwai/183Skin1/183Skin1_od.x",0,0,1280,800)
+	backgroundeffect:SetTouchEnabled(0)
 	backgroundeffect:SetVisible(0)
     --local bk_T = wnd:AddButton("../data/wallpaper/l.bmp","../data/wallpaper/l1.bmp","../data/wallpaper/l2.bmp",189,730-OffsetY1,69,70)
     --local time = 1
@@ -952,7 +956,6 @@ function InitMainGame_hall(wnd)
 	yinghuashudianji:SetVisible(0)
 	luoxuedianji:SetVisible(0)
 	yudidianji:SetVisible(0)
-	pianyidianji:SetVisible(0)
 	liuguang.script[XE_LBUP] = function()
 		if liuguangdianji:IsVisible() then
 			liuguangdianji:SetVisible(0)
@@ -1009,30 +1012,31 @@ function InitMainGame_hall(wnd)
 			backgroundeffect:SetVisible(1)
 		end
 	end
-
+	btn_taaa:ToggleBehaviour(XE_ONUPDATE, 1)
+	btn_taaa:ToggleEvent(XE_ONUPDATE, 1)
 	btn_taaa.script[XE_ONUPDATE] = function()
 		if pianyidianji:IsVisible() then
-			currentMouseX,currentMouseY = hero_model:GetLocalMousePosition()
-			if currentMouseX < 220 then
-				imagex = currentMouseX /2
+			currentMouseX,currentMouseY = btn_taaa:GetLocalMousePosition()
+			if currentMouseX < 440 then
+				imagex = (440-currentMouseX) /8
 			end
-			if currentMouseY < 110 then
-				imagey = currentMouseY/2
+			if currentMouseY < 220 then
+				imagey = (220-currentMouseY) /8
 			end
-			if currentMouseX > 1060 then
-				imagex = - ((currentMouseX -1060)/2)
+			if currentMouseX > 840 then
+				imagex = -(currentMouseX - 840) /8
 			end
-			if currentMouseX > 690 then
-				imagex = - ((currentMousey -690)/2)
+			if currentMouseY > 680 then
+				imagey = -(currentMouseY - 680) /8
 			end
-			btn_aaa:SetPosition(-110 + imagex,-55 + imagey)
+			btn_taaa:SetPosition(-110 + imagex,-55 + imagey)
 		end
 	end
 
 	pianyi.script[XE_LBUP] = function()
 		if pianyidianji:IsVisible() then
 			pianyidianji:SetVisible(0)
-			btn_aaa:SetPosition(-110,-55)
+			btn_taaa:SetPosition(-110,-55)
 		else
 			pianyidianji:SetVisible(1)
 		end
