@@ -253,7 +253,7 @@ function InitMainGame_hall(wnd)
 	--µ×Í¼±³¾°
 	MainHall_BK = wnd:AddImage(path_MailHallSkin,0,0,1280,800)
 	MainHall_Effect = wnd:AddEffect(Dynamic_BG,0,0,1280,800)
-	local backgroundeffect = wnd:AddEffect("../Data/Magic/Common/UI/changwai/183Skin1/183Skin1_od.x",0,0,1280,800)
+	local backgroundeffect = wnd:AddEffect("../Data/Magic/Common/UI/changwai/183Skin1/magick0.x",0,0,1280,800)
 	btn_taaa = wnd:AddImage("../data/wallpaper/20.bmp",0,0,1280,800)
     --local bk_T = wnd:AddButton("../data/wallpaper/l.bmp","../data/wallpaper/l1.bmp","../data/wallpaper/l2.bmp",189,730-OffsetY1,69,70)
     --local time = 1
