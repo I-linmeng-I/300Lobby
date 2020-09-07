@@ -948,6 +948,7 @@ function InitMainGame_hall(wnd)
     pianyidianji:SetTouchEnabled(0)
     pianyi:AddFont("鼠标偏移",15,0,24,0,500,20,0xffffff)
 	liuguangdianji:SetVisible(0)
+	--123
 	liuguang.script[XE_LBUP] = function()
 		if liuguangdianji:IsVisible() then
 			liuguangdianji:SetVisible(0)
