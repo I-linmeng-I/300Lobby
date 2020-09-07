@@ -76,7 +76,6 @@ local xunhuan = false
 local imgreturn = false
 playlistimagenamenamename = {0,1,2,3,4}
 nowplayingnamename = ""
-local bk_switch1 = nil
 local beijing_BKWND = nil
 currentMouseX,currentMouseY = 0,0
 imagex,imagey = 0,0
