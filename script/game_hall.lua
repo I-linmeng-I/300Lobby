@@ -1,7 +1,7 @@
 include("../Data/Script/Common/include.lua")
 include("../Data/Script/Common/rotateGameHall.lua")
 --123
--- local IsTodayFirstSignIn = 0      -----ÊÇ·ñ½ñÈÕÊ×´ÎµÇÂ½
+-- local IsTodayFirstSignIn = 0      -----æ˜¯å¦ä»Šæ—¥é¦–æ¬¡ç™»é™†
 btn_taaa=nil
 OffsetY1 = 0
 OffsetY2_Start = 0
@@ -29,7 +29,7 @@ function InitGame_hallUI(wnd, bisopen)
 	g_game_hall_ui:SetVisible(bisopen)	
 end
 
--- ´óÌü±³¾°Í¼ºÍÓ¢ĞÛId
+-- å¤§å…èƒŒæ™¯å›¾å’Œè‹±é›„Id
 local MainHall_BK = nil
 local MainHall_Effect = nil
 MainHall_BKHeroId = 274
@@ -115,7 +115,7 @@ local live2dWindow = nil
 
 local Panel_rotate = nil
 
--- Ä£ĞÍÕ¹Ê¾
+-- æ¨¡å‹å±•ç¤º
 local ModelWnd = nil
 local bShowModel = false
 local btnSwitch = nil
@@ -178,7 +178,7 @@ function saoleijiance(i,j)
 					if x == i and y == j then
 						jieguofangkuai[x][y].changeimage(path.."explosive.BMP")  --../data/Minesweeper/explosive.BMP
 						jieguofangkuaiwenzi[x][y]:SetFontText("",0x00EC00)
-						saoleilock = true--ĞŞ¸Äfalse ²»»áÊä
+						saoleilock = true--ä¿®æ”¹false ä¸ä¼šè¾“
 						youwin.changeimage(path.."lose.BMP") --../data/Minesweeper/lose.BMP
 						youwin:SetVisible(1)
 						return
@@ -217,7 +217,7 @@ function leijiance(i,j)
 end
 
 function saolei()
-	--³õÊ¼»¯
+	--åˆå§‹åŒ–
 	for i=1,16 do
 		for j=1,16 do
 			jieguofangkuaijiance[i][j] = 0
@@ -227,7 +227,7 @@ function saolei()
 			qizifangkuai[i][j]:SetVisible(0)
 		end
 	end
-	--¼ÆËãÀ×Î»ÖÃ
+	--è®¡ç®—é›·ä½ç½®
 	math.randomseed(tostring(os.time()):reverse():sub(1, 7))
 	leiweizhi = {}
 	while #leiweizhi < 40 do 
@@ -250,7 +250,7 @@ end
 
 function InitMainGame_hall(wnd)
 
-	--µ×Í¼±³¾°
+	--åº•å›¾èƒŒæ™¯
 	MainHall_BK = wnd:AddImage(path_MailHallSkin,0,0,1280,800)
 	MainHall_Effect = wnd:AddEffect(Dynamic_BG,0,0,1280,800)
 	local backgroundeffect = wnd:AddEffect("../Data/Magic/Common/UI/changwai/183Skin1/183Skin1_od.x",0,0,1280,800)
@@ -267,7 +267,7 @@ function InitMainGame_hall(wnd)
 	--MainHall_Effect:SetTouchEnabled(0)
 	
 
-	--ÒôÀÖÑ¡µ¥
+	--éŸ³ä¹é€‰å•
 	local pat = wnd:AddImage("musicplayer/img/shime1.png",534,637,128,128)
 	local patbutton = wnd:AddButton("musicplayer/texture/aaa.png","musicplayer/texture/aaa.png","musicplayer/texture/aaa.png",534,637,128,128)
 	local xx,yy = 534,637
@@ -279,11 +279,11 @@ function InitMainGame_hall(wnd)
     buttonpad:SetVisible(0)
     local playlisttable = CreateWindow(buttonpad.id,0,0,478,389)
     local musicbutton = buttonpad:AddButton(path_lolcard.."btnBK.BMP",path_lolcard.."btnBK_2.BMP",path_lolcard.."btnBK_3.BMP",0,390,100,33)
-    musicbutton:AddFont("ÒôÀÖ¿ª¹Ø",15,8,0,0,100,33,0xffffff)
+    musicbutton:AddFont("éŸ³ä¹å¼€å…³",15,8,0,0,100,33,0xffffff)
     local saoleibutton = buttonpad:AddButton(path_lolcard.."btnBK.BMP",path_lolcard.."btnBK_2.BMP",path_lolcard.."btnBK_3.BMP",110,390,100,33)
-    saoleibutton:AddFont("É¨À×¿ª¹Ø",15,8,0,0,100,33,0xffffff)
+    saoleibutton:AddFont("æ‰«é›·å¼€å…³",15,8,0,0,100,33,0xffffff)
     local beijingbutton = buttonpad:AddButton(path_lolcard.."btnBK.BMP",path_lolcard.."btnBK_2.BMP",path_lolcard.."btnBK_3.BMP",220,390,100,33)
-    beijingbutton:AddFont("±³¾°Ïà¹Ø",15,8,0,0,100,33,0xffffff)
+    beijingbutton:AddFont("èƒŒæ™¯ç›¸å…³",15,8,0,0,100,33,0xffffff)
     musicbutton.script[XE_LBUP] = function()
         playlisttable:SetVisible(1)
         musicbutton:SetVisible(0)
@@ -453,7 +453,7 @@ function InitMainGame_hall(wnd)
 	local volume = aaa:AddFont(volumevolume,25,8,0,5,77,50,0x1C1C1C)
 
 	local img_Id = playlisttable:AddImage("musicplayer/texture/account_login.png",123 - 117,50 - 44,232,36)
-	account = img_Id:AddFont("¸èµ¥id",18,0,9,6,230,20,0xffffffff)
+	account = img_Id:AddFont("æ­Œå•id",18,0,9,6,230,20,0xffffffff)
 	uiedi1 = CreateWindow(playlisttable.id,198 - 117,57 - 44,100,57)
 	userinput1 = uiedi1:AddEdit(path_login.."passwordEdit_login.BMP","","onEnterGame1","onLoginTab",18,0,0,90,30,0xffffffff,0xff000000,0,"onLBUP")
 	userinput1:SetTransparent(0)
@@ -467,7 +467,7 @@ function InitMainGame_hall(wnd)
 	end
 
 	local img_Id2 = playlisttable:AddImage("musicplayer/texture/account_login.png",323 - 117,50 - 44,232,36)
-	account2 = img_Id2:AddFont("¸èÇúid",18,0,9,6,430,20,0xffffffff)
+	account2 = img_Id2:AddFont("æ­Œæ›²id",18,0,9,6,430,20,0xffffffff)
 	uiedi2 = CreateWindow(playlisttable.id,398 - 117,57 - 44,100,57)
 	userinput2 = uiedi2:AddEdit(path_login.."passwordEdit_login.BMP","","onEnterGame2","onLoginTab",18,0,0,90,30,0xffffffff,0xff000000,0,"onLBUP")
 	userinput2:SetTransparent(0)
@@ -821,15 +821,15 @@ function InitMainGame_hall(wnd)
 	uiedi1:SetVisible(0)
 	uiedi2:SetVisible(0)
 	buttonbk:SetVisible(1)	
-	--ÒôÀÖÑ¡µ¥½áÊø
+	--éŸ³ä¹é€‰å•ç»“æŸ
     
-    --É¨À×¿ªÊ¼
-    saolei_BKWND = CreateWindow(buttonpad.id, 0, -155, 544, 544)--±³¾°
+    --æ‰«é›·å¼€å§‹
+    saolei_BKWND = CreateWindow(buttonpad.id, 0, -155, 544, 544)--èƒŒæ™¯
     saolei_BKWND:SetVisible(0)
 	saolei_BK = saolei_BKWND:AddImage("mine/setu1.bmp",0,0,544,544)--"../data/Minesweeper/bk.BMP"
 	saoleicount_bk = saolei_BKWND:AddImage("mine/countbk.BMP",0,544,140,34)--"../data/Minesweeper/countbk.BMP"
-	saoleicount_bkwenzi = saoleicount_bk:AddFont("Ê£ÓàÀ×ÊıÁ¿£º"..shengyuleishuliang,25,8,0,0,140,34,0xFF0000)
-	--´´½¨·½¿é
+	saoleicount_bkwenzi = saoleicount_bk:AddFont("å‰©ä½™é›·æ•°é‡ï¼š"..shengyuleishuliang,25,8,0,0,140,34,0xFF0000)
+	--åˆ›å»ºæ–¹å—
 	for i=1,16 do
 		saoleifangkuang[i] = {}
 		qizifangkuai[i] = {}
@@ -866,7 +866,7 @@ function InitMainGame_hall(wnd)
 								setuqiehuan = 0
 							end
 							setuqiehuan = setuqiehuan + 1
-							saolei_BK.changeimage(path.."setu"..setuqiehuan..".bmp")--Â·¾¶""setu1.bmp"¸ÄÊı×Ö
+							saolei_BK.changeimage(path.."setu"..setuqiehuan..".bmp")--è·¯å¾„""setu1.bmp"æ”¹æ•°å­—
 							youwin:SetVisible(1)
 							saoleilock = true
 							for i =1,16 do
@@ -884,23 +884,23 @@ function InitMainGame_hall(wnd)
 				if saoleilock == false then
 					qizifangkuai[i][j]:SetVisible(1)
 					shengyuleishuliang = shengyuleishuliang - 1
-					saoleicount_bkwenzi:SetFontText("Ê£ÓàÀ×ÊıÁ¿£º"..shengyuleishuliang,0xFF0000)
+					saoleicount_bkwenzi:SetFontText("å‰©ä½™é›·æ•°é‡ï¼š"..shengyuleishuliang,0xFF0000)
 				end
 			end
 			qizifangkuai[i][j].script[XE_RBUP] = function()
 				if saoleilock == false then
 					qizifangkuai[i][j]:SetVisible(0)
 					shengyuleishuliang = shengyuleishuliang + 1
-					saoleicount_bkwenzi:SetFontText("Ê£ÓàÀ×ÊıÁ¿£º"..shengyuleishuliang,0xFF0000)
+					saoleicount_bkwenzi:SetFontText("å‰©ä½™é›·æ•°é‡ï¼š"..shengyuleishuliang,0xFF0000)
 				end
 			end
 		end
 	end
 	youwin = saolei_BKWND:AddImage("mine/win.BMP",0,0,544,544)--"../data/Minesweeper/win.BMP"
 	youwin:SetVisible(0)
-	saolei()--³õÊ¼»¯
+	saolei()--åˆå§‹åŒ–
 	local chushihua = saolei_BKWND:AddButton("mine/gezi1.BMP","mine/gezi2.BMP","mine/gezi3.BMP",139,544, 40, 34)
-	local reset = chushihua:AddFont("ÖØÖÃ",25,8,0,0,40,34,0xFF0000)
+	local reset = chushihua:AddFont("é‡ç½®",25,8,0,0,40,34,0xFF0000)
 	chushihua.script[XE_LBUP] = function()
 		saolei()
 		saoleilock = false
@@ -910,43 +910,43 @@ function InitMainGame_hall(wnd)
 	end
 
 	saolei_BKWND:SetVisible(0)
-	--É¨À×½áÊø
+	--æ‰«é›·ç»“æŸ
 
-    --±³¾°ÇĞ»»¿ªÊ¼
+    --èƒŒæ™¯åˆ‡æ¢å¼€å§‹
     beijing_BKWND = CreateWindow(buttonpad.id,0,150,409,233)
     beijing_BKWND:SetVisible(0)
-    local beijing_bk = beijing_BKWND:AddImage(path.."txbk.BMP",0,-121,628,406)--±³¾°
-	beijing_bk:AddFont("±³¾°ÇĞ»»&ÌØĞ§¿ØÖÆ",15,8,-214,-21,200,33,0xffffff)
+    local beijing_bk = beijing_BKWND:AddImage(path.."txbk.BMP",0,-121,628,406)--èƒŒæ™¯
+	beijing_bk:AddFont("èƒŒæ™¯åˆ‡æ¢&ç‰¹æ•ˆæ§åˆ¶",15,8,-214,-21,200,33,0xffffff)
 	
     local liuguang = beijing_BKWND:AddImage(path.."checkbox_login.BMP",43,-55,24,24)
     liuguang:SetTouchEnabled(1)
     local liuguangdianji = liuguang:AddImage(path.."checkboxhave_login.BMP",0,0,24,24)
     liuguangdianji:SetTouchEnabled(0)
-    liuguang:AddFont("Á÷¹âÌØĞ§",15,0,24,0,500,20,0xffffff)
+    liuguang:AddFont("æµå…‰ç‰¹æ•ˆ",15,0,24,0,500,20,0xffffff)
 	
 	local yinghuashu = beijing_BKWND:AddImage(path.."checkbox_login.BMP",143,-55,24,24)
     yinghuashu:SetTouchEnabled(1)
     local yinghuashudianji = yinghuashu:AddImage(path.."checkboxhave_login.BMP",0,0,24,24)
     yinghuashudianji:SetTouchEnabled(0)
-    yinghuashu:AddFont("Ó£»¨ÌØĞ§",15,0,24,0,500,20,0xffffff)
+    yinghuashu:AddFont("æ¨±èŠ±ç‰¹æ•ˆ",15,0,24,0,500,20,0xffffff)
 	
     local luoxue = beijing_BKWND:AddImage(path.."checkbox_login.BMP",243,-55,24,24)
     luoxue:SetTouchEnabled(1)
     local luoxuedianji = luoxue:AddImage(path.."checkboxhave_login.BMP",0,0,24,24)
     luoxuedianji:SetTouchEnabled(0)
-    luoxue:AddFont("ÂäÑ©ÌØĞ§",15,0,24,0,500,20,0xffffff)
+    luoxue:AddFont("è½é›ªç‰¹æ•ˆ",15,0,24,0,500,20,0xffffff)
 	
 	local yudi = beijing_BKWND:AddImage(path.."checkbox_login.BMP",343,-55,24,24)
     yudi:SetTouchEnabled(1)
     local yudidianji = yudi:AddImage(path.."checkboxhave_login.BMP",0,0,24,24)
     yudidianji:SetTouchEnabled(0)
-    yudi:AddFont("ÓêµÎÌØĞ§",15,0,24,0,500,20,0xffffff)
+    yudi:AddFont("é›¨æ»´ç‰¹æ•ˆ",15,0,24,0,500,20,0xffffff)
 	
 	local pianyi = beijing_BKWND:AddImage(path.."checkbox_login.BMP",443,-55,24,24)
     pianyi:SetTouchEnabled(1)
     local pianyidianji = pianyi:AddImage(path.."checkboxhave_login.BMP",0,0,24,24)
     pianyidianji:SetTouchEnabled(0)
-    pianyi:AddFont("Êó±êÆ«ÒÆ",15,0,24,0,500,20,0xffffff)
+    pianyi:AddFont("é¼ æ ‡åç§»",15,0,24,0,500,20,0xffffff)
 	liuguangdianji:SetVisible(0)
 	liuguang.script[XE_LBUP] = function()
 		if liuguangdianji:IsVisible() then
@@ -1021,9 +1021,9 @@ function InitMainGame_hall(wnd)
     
 	local shipinbutton = beijing_BKWND:AddButton(path.."bt.BMP",path.."bt2.BMP",path.."bt3.BMP",143,-15,87,20)
 
-	--ÌØĞ§
+	--ç‰¹æ•ˆ
 
-    --±³¾°ÇĞ»»½áÊø
+    --èƒŒæ™¯åˆ‡æ¢ç»“æŸ
 	MainHall_BK.script[XE_LBUP] = function()
 		XClickHallPic()
 	end
@@ -1035,9 +1035,9 @@ function InitMainGame_hall(wnd)
 	Panel_rotate = RotateHallPanel:New(wnd.id)
 	Panel_rotate:SetVisible(0)
 	
-	--»Ö¸´Ä¬ÈÏ
+	--æ¢å¤é»˜è®¤
 	btn_defaultbk = wnd:AddButton(path.."button1_hall.BMP", path.."button2_hall.BMP", path.."button3_hall.BMP",20000,700, 179, 56)
-	btn_defaultbk:AddFont("Ä¬ÈÏ±³¾°", 15, 8, 0, 0, 179, 56, 0xbeb9cf)
+	btn_defaultbk:AddFont("é»˜è®¤èƒŒæ™¯", 15, 8, 0, 0, 179, 56, 0xbeb9cf)
 	btn_defaultbk.script[XE_LBUP] = function()
 		XClickPlaySound(UI_click_new)
 		if MainHall_BKSkinId==SKIN_ID_MAX then
@@ -1098,23 +1098,23 @@ function InitMainGame_hall(wnd)
 	end
 	btn_defaultbk:SetVisible(0)
 	
-	--Ç°ÍùÉÌ³Ç
+	--å‰å¾€å•†åŸ
 	btn_gotoshop = wnd:AddButton(path.."button1_hall.BMP", path.."button2_hall.BMP", path.."button3_hall.BMP",20000,700, 179, 56)
-	btn_gotoshop:AddFont("Ç°ÍùÉÌ³Ç", 15, 8, 0, 0, 179, 56, 0xbeb9cf)
+	btn_gotoshop:AddFont("å‰å¾€å•†åŸ", 15, 8, 0, 0, 179, 56, 0xbeb9cf)
 	btn_gotoshop.script[XE_LBUP] = function()
 		XClickPlaySound(Sound_shop)
 		
 		XShopUiIsClick(1)
-		-----Ìøµ½ÉÌ³ÇÓ¢ĞÛ½çÃæ+
+		-----è·³åˆ°å•†åŸè‹±é›„ç•Œé¢+
 		Set_JumpToShopHero()
 	end
-	--Ó¢ĞÛÏêÇé
+	--è‹±é›„è¯¦æƒ…
 	btn_herodetail = wnd:AddButton(path.."button1_hall.BMP", path.."button2_hall.BMP", path.."button3_hall.BMP",20000,700, 179, 56)
-	btn_herodetail:AddFont("Ó¢ĞÛÏêÇé", 15, 8, 0, 0, 179, 56, 0xbeb9cf)
+	btn_herodetail:AddFont("è‹±é›„è¯¦æƒ…", 15, 8, 0, 0, 179, 56, 0xbeb9cf)
 	btn_herodetail.script[XE_LBUP] = function()
 		XClickPlaySound(UI_click_new)
 				
-		------Ìøµ½¼¯¿¨Êé¶ş¼¶Ò³Ãæ
+		------è·³åˆ°é›†å¡ä¹¦äºŒçº§é¡µé¢
 		Set_JumpToHeroDetail()
 		--Set_JumpToEquipSynthesize()
 	end
@@ -1123,12 +1123,12 @@ function InitMainGame_hall(wnd)
 	live2dWindow = CreateWindow(MainHall_BK.id, wid, hei, 1280,800)
 	wnd_live2d = live2dWindow:AddLive2DWnd(wid, hei, 1280, 800)
 
-	--Ì¨´ÊÆøÅİ
+	--å°è¯æ°”æ³¡
 	Live2D_Pop = live2dWindow:AddImage(path_lollive2d.."paopao.bmp",566-wid,122-hei,255,140)
 	Live2D_PopFont = Live2D_Pop:AddFont("",18,8,0,0,255,140,0xf69752)
 	Live2D_Pop:SetVisible(0)
 	
-	--µã»÷ÆøÅİ
+	--ç‚¹å‡»æ°”æ³¡
 	Live2D_Bubble = live2dWindow:AddImage(path_lollive2d.."pp.bmp",566-wid,250-hei,97,71)
 	Live2D_Bubble.script[XE_LBUP] = function()
 		XClickPlaySound(UI_click_new)
@@ -1141,7 +1141,7 @@ function InitMainGame_hall(wnd)
 	effect_live2d:SetTouchEnabled(0)
 	effect_live2d:SetVisible(0)
 	
-	-- µ×
+	-- åº•
 	Panel_BK_F = MainHall_BK:AddImage(path_lollive2d.."bgf.bmp",167,690,40,58);
 	Panel_BK_B = MainHall_BK:AddImage(path_lollive2d.."bgb.bmp",167,690,40,58);
 	Panel_BK = MainHall_BK:AddImage(path_lollive2d.."bg.bmp",207,690,40,58)
@@ -1164,7 +1164,7 @@ function InitMainGame_hall(wnd)
 		end
 	end
 	
-	--Ö°½éÇĞ»»
+	--èŒä»‹åˆ‡æ¢
 	btn_switchsuper = MainHall_BK:AddButton(path_lollive2d.."maho.BMP", path_lollive2d.."maho_l.BMP", path_lollive2d.."maho.BMP",135,690, 109, 67)
 	btn_switchsuper.script[XE_LBUP] = function()
 		XClickPlaySound(UI_click_new)
@@ -1193,7 +1193,7 @@ function InitMainGame_hall(wnd)
 		end
 	end
 	
-	-- --Live2DÄÚ
+	-- --Live2Då†…
 	-- btn_live2d_in = wnd_live2d:AddButton(path_lollive2d.."otaku_3.BMP", path_lollive2d.."otaku_4.BMP", path_lollive2d.."otaku_5.BMP",50-wid,677-hei, 85, 80)
 	-- btn_live2d_in.script[XE_LBUP] = function()
 		-- XClickPlaySound(UI_click_new)
@@ -1233,7 +1233,7 @@ function SetBingo_TimeRange(starttime,endtime)
 end
 
 
--- ÉèÖÃ´óÌü±³¾°Í¼
+-- è®¾ç½®å¤§å…èƒŒæ™¯å›¾
 function SetImage_MainHallBK(picture,path)
 log("\npicture = "..picture)
 	MainHall_BK.changeimage(picture)
@@ -1246,7 +1246,7 @@ log("\npicture = "..picture)
 	end
 end
 
--- »Ö¸´Ä¬ÈÏÊ±°´Å¥´¦Àí
+-- æ¢å¤é»˜è®¤æ—¶æŒ‰é’®å¤„ç†
 function ShowDefaultMainHallBK(default,shop,herodetail,havechangeimage)	
 log("\ndefault = "..default..";shop = "..shop..";herodetail = "..herodetail)
 	DefaultBK_SetVisible(default)
@@ -1273,7 +1273,7 @@ end
 
 
 
---ÉèÖÃÏÔÊ¾
+--è®¾ç½®æ˜¾ç¤º
 function SetGameHallIsVisible(flag) 
 	if g_game_hall_ui ~= nil then
 		if flag == 1 and g_game_hall_ui:IsVisible() == false then
@@ -1291,13 +1291,13 @@ function SetGameHallIsVisible(flag)
 			g_game_hall_ui:SetVisible(0)
 			SetReturnVisible(1)
 			--SetChatMainIsVisible(0)
-			SetExpression_interfaceVisible(0)--ÓÉÓÚ±íÇé²ã¼¶±È½Ï¸ß
+			SetExpression_interfaceVisible(0)--ç”±äºè¡¨æƒ…å±‚çº§æ¯”è¾ƒé«˜
 			
 			--XInGameLog("act=WINDOW,Function=SetGameHallIsVisible,visible=false")
 		end
 	end
 end
---»ñÈ¡ÊÇ·ñÏÔÊ¾
+--è·å–æ˜¯å¦æ˜¾ç¤º
 function GetGameHallIsVisible()  
     if g_game_hall_ui~=nil and g_game_hall_ui:IsVisible()==true then
         return 1
@@ -1393,27 +1393,27 @@ function ShowLive2dDlg(show)
 		-- end
 		
 		dlg_live2d.BK = wnd_live2d:AddImage(path.."live2d/duihuakuang.BMP",51-wid,463-hei,250,173)
-		--dlg_live2d.BK:AddFont("MasterÄãºÃ£¬ÎÒÊÇ¿´°å\nÄï¡ª¡ªÒÁÀûÑÇ£¬Èç¹ûĞè\nÒªÒÁÀûÑÇ³¤ÆÚÅã°é£¬Çë\nÇ°Íù         ¹ºÂòÊ¥±­Õ½Õù\nÆ¤·ôÀñ°üÕÙ»½ÎÒÅ¶~~", 12, 0, 65, 55, 250, 173, 0x131313)
+		--dlg_live2d.BK:AddFont("Masterä½ å¥½ï¼Œæˆ‘æ˜¯çœ‹æ¿\nå¨˜â€”â€”ä¼Šåˆ©äºšï¼Œå¦‚æœéœ€\nè¦ä¼Šåˆ©äºšé•¿æœŸé™ªä¼´ï¼Œè¯·\nå‰å¾€         è´­ä¹°åœ£æ¯æˆ˜äº‰\nçš®è‚¤ç¤¼åŒ…å¬å”¤æˆ‘å“¦~~", 12, 0, 65, 55, 250, 173, 0x131313)
 		
 		-- dlg_live2d.BK:AddButton(path.."live2d/baocun.BMP", path.."live2d/baocun.BMP", path.."live2d/baocun.BMP",0,150, 88, 31)
 		-- dlg_live2d.BK:AddButton(path.."live2d/duqu.BMP", path.."live2d/duqu.BMP", path.."live2d/duqu.BMP",94,150, 88, 31)
 		
-		--¹ºÂò
+		--è´­ä¹°
 		dlg_live2d.Shop = dlg_live2d.BK:AddButton(path.."live2d/sc_1.BMP", path.."live2d/sc_2.BMP", path.."live2d/sc_3.BMP",61,99, 60, 25)
 		
 		dlg_live2d.Shop.script[XE_LBUP] = function()
 			XShopUiIsClick(1)
-			-----Ìøµ½ÉÌ³ÇÓ¢ĞÛ½çÃæ
+			-----è·³åˆ°å•†åŸè‹±é›„ç•Œé¢
 			Set_JumpToShopHero()
 		end
 			
-		-- --Ö°½éÇĞ»»
+		-- --èŒä»‹åˆ‡æ¢
 		-- dlg_live2d.Switch = dlg_live2d.BK:AddButton(path.."live2d/zhijiebianshen.BMP", path.."live2d/zhijiebianshen.BMP", path.."live2d/zhijiebianshen.BMP",282,150, 88, 31)
 		-- dlg_live2d.Switch.script[XE_LBUP] = function()
 			-- XSwitchLive2D(wnd_live2d.id, Currunt_HeroId, Currunt_SkinId)
 		-- end
 
-		-- --Á¢»æ
+		-- --ç«‹ç»˜
 		-- dlg_live2d.Hide = dlg_live2d.BK:AddButton(path.."live2d/lihui.BMP", path.."live2d/lihui.BMP", path.."live2d/lihui.BMP",376,150, 88, 31)
 		-- dlg_live2d.Hide.script[XE_LBUP] = function()
 			-- if click_live2d ~= 0 then
@@ -1435,7 +1435,7 @@ function ShowLive2dDlg(show)
 			-- end
 		-- end
 
-		-- --¹Ø±Õ
+		-- --å…³é—­
 		-- dlg_live2d.Close = dlg_live2d.BK:AddButton(path.."live2d/guanbiduihua.BMP", path.."live2d/guanbiduihua.BMP", path.."live2d/guanbiduihua.BMP",470,150, 88, 31)
 		-- dlg_live2d.Close.script[XE_LBUP] = function()
 			-- dlg_live2d.BK:MoveBy(0,245,0.5)
