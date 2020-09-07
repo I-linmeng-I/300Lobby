@@ -63,6 +63,7 @@ local playlistline = nil
 local playlistname = {}
 local playlistimagename = {}
 local playlistimagenamename = {}
+local songdelectbutton = {}
 local patspeed_X = 0
 local patspeed_Y = 0
 local walking = 1
@@ -965,7 +966,6 @@ function InitMainGame_hall(wnd)
 			yinghuashudianji:SetVisible(0)
 			luoxuedianji:SetVisible(0)
 			yudidianji:SetVisible(0)
-			pianyidianji:SetVisible(0)
 			backgroundeffect:SetVisible(1)
 			backgroundeffect:ChangeEffect("../Data/Magic/Common/UI/changwai/183Skin1/183Skin1_od.x")
 		end
@@ -980,7 +980,6 @@ function InitMainGame_hall(wnd)
 			yinghuashudianji:SetVisible(1)
 			luoxuedianji:SetVisible(0)
 			yudidianji:SetVisible(0)
-			pianyidianji:SetVisible(0)
 			backgroundeffect:SetVisible(1)
 		end
 	end
@@ -994,7 +993,6 @@ function InitMainGame_hall(wnd)
 			yinghuashudianji:SetVisible(0)
 			luoxuedianji:SetVisible(1)
 			yudidianji:SetVisible(0)
-			pianyidianji:SetVisible(0)
 			backgroundeffect:SetVisible(1)
 		end
 	end
@@ -1008,7 +1006,6 @@ function InitMainGame_hall(wnd)
 			yinghuashudianji:SetVisible(0)
 			luoxuedianji:SetVisible(0)
 			yudidianji:SetVisible(1)
-			pianyidianji:SetVisible(0)
 			backgroundeffect:SetVisible(1)
 		end
 	end
@@ -1559,6 +1556,46 @@ function ReturnToGameHall(flag)
 	end
 end
 
+function delectsong(songid)
+	playlistname = {}
+	local playlistid = {}
+	local file = io.open("musicplayer/config/playlistname.txt",'r')
+	for line in file:lines() do
+		table.insert(playlistname, line)
+	end
+	file:close()
+	local file = io.open("musicplayer/config/playlistid.txt",'r')
+	for line in file:lines() do
+		table.insert(playlistid, line)
+	end
+	file:close()
+	table.remove(playlistname,songid)
+	table.remove(playlistid,songid)
+	local file = io.open("musicplayer/config/playlistname.txt",'w')
+	file:close()
+	local file = io.open("musicplayer/config/playlistname.txt",'a')
+	if playlistname ~= {} then
+		for i=1,#playlistname do
+			file:write(playlistname[i].."\n")
+		end
+	end
+	file:close()
+	local file = io.open("musicplayer/config/playlistid.txt",'w')
+	file:close()
+	local file = io.open("musicplayer/config/playlistid.txt",'a')
+	if playlistname ~= {} then
+		for i=1,#playlistid do
+			file:write(playlistid[i].."\n")
+		end
+	end
+	file:close()
+	local file = io.open("config/renovate.txt",'w')
+	file:close()
+	table.insert(playlistname, "line")
+	CreateplaylistHall()
+	--123
+end
+
 function CreateplaylistHall()
 	local file = io.open("musicplayer/config/playlistname.txt",'a')
 	file:close()
@@ -1576,6 +1613,7 @@ function CreateplaylistHall()
 		    local hight = 0
 		    while(i <= 5) do
 				playlistimagename[i] = playlistline:AddButton("musicplayer/texture/songbk.png","musicplayer/texture/songbk.png","musicplayer/texture/songbk.png",0,hight,460,44)
+				songdelectbutton[i] = playlistline:AddButton("musicplayer/texture/delect1.png","musicplayer/texture/delect2.png","musicplayer/texture/delect3.png",422,hight+3,36,36)
 				if i == 1 then
 					playlistimagename[i].script[XE_LBUP] = function()
 						XClickPlaySound(UI_click_new)
@@ -1583,6 +1621,10 @@ function CreateplaylistHall()
 						file:write(playlistimagenamenamename[1])
 						isplaying = true
 						file:close()
+					end
+					songdelectbutton[i].script[XE_LBUP] = function()
+						XClickPlaySound(UI_click_new)
+						delectsong(1)
 					end
 				elseif i == 2 then
 					playlistimagename[i].script[XE_LBUP] = function()
@@ -1592,6 +1634,10 @@ function CreateplaylistHall()
 						isplaying = true
 						file:close()
 					end
+					songdelectbutton[i].script[XE_LBUP] = function()
+						XClickPlaySound(UI_click_new)
+						delectsong(2)
+					end
 				elseif i == 3 then
 					playlistimagename[i].script[XE_LBUP] = function()
 						XClickPlaySound(UI_click_new)
@@ -1599,6 +1645,10 @@ function CreateplaylistHall()
 						file:write(playlistimagenamenamename[3])
 						isplaying = true
 						file:close()
+					end
+					songdelectbutton[i].script[XE_LBUP] = function()
+						XClickPlaySound(UI_click_new)
+						delectsong(3)
 					end
 				elseif i == 4 then
 					playlistimagename[i].script[XE_LBUP] = function()
@@ -1608,6 +1658,10 @@ function CreateplaylistHall()
 						isplaying = true
 						file:close()
 					end
+					songdelectbutton[i].script[XE_LBUP] = function()
+						XClickPlaySound(UI_click_new)
+						delectsong(4)
+					end
 				elseif i == 5 then
 					playlistimagename[i].script[XE_LBUP] = function()
 						XClickPlaySound(UI_click_new)
@@ -1616,11 +1670,16 @@ function CreateplaylistHall()
 						isplaying = true
 						file:close()
 					end
+					songdelectbutton[i].script[XE_LBUP] = function()
+						XClickPlaySound(UI_click_new)
+						delectsong(5)
+					end
 				end
 				playlistimagenamename[i] = playlistimagename[i]:AddFont("",40,0,9,10,460,40,0x1C1C1C)
 				hight = hight + 44
 				if i > #playlistname then
 					playlistimagename[i]:SetVisible(0)
+					songdelectbutton[i]:SetVisible(0)
 				end
 			    i = i + 1
 		    end
@@ -1635,6 +1694,7 @@ function CreateplaylistHall()
 				if linenumber<5 then
 					for a= linenumber + 1, #playlistname do 
 						playlistimagename[a]:SetVisible(0)
+						songdelectbutton[a]:SetVisible(0)
 						if a == 5 then
 							break
 						end
@@ -1645,6 +1705,7 @@ function CreateplaylistHall()
 				if #playlistname<linenumber then
 					for a=#playlistname+1,linenumber do
 						playlistimagename[a]:SetVisible(1)
+						songdelectbutton[a]:SetVisible(1)
 						if a == 5 then
 							break
 						end
@@ -1652,7 +1713,13 @@ function CreateplaylistHall()
 				end
 			end
 		end
-	end	
+	end
+	file:close()
+	local file = io.open("musicplayer/config/playlistname.txt",'r')
+	if file:read('*all') == "" and #playlistname ~= 0 then
+		playlistimagename[1]:SetVisible(0)
+		songdelectbutton[1]:SetVisible(0)
+	end
 	file:close()
 	playlistname={}
 	local file = io.open("musicplayer/config/playlistname.txt",'r')
