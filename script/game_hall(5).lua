@@ -1,6 +1,6 @@
 include("../Data/Script/Common/include.lua")
 include("../Data/Script/Common/rotateGameHall.lua")
-
+--123
 -- local IsTodayFirstSignIn = 0      -----是否今日首次登陆
 btn_taaa=nil
 OffsetY1 = 0
