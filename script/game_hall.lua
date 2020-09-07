@@ -948,10 +948,9 @@ function InitMainGame_hall(wnd)
     pianyidianji:SetTouchEnabled(0)
     pianyi:AddFont("Êó±êÆ«ÒÆ",15,0,24,0,500,20,0xffffff)
 	liuguangdianji:SetVisible(0)
-	--123
 	liuguang.script[XE_LBUP] = function()
-		if liuguangdianji:IsVisible() then
-			liuguangdianji:SetVisible(0)
+		if liuguangdianji:IsVisible() == false then
+			liuguangdianji:SetVisible(1)
 			backgroundeffect:SetVisible(0)
 		else
 			liuguangdianji:SetVisible(1)
@@ -965,7 +964,7 @@ function InitMainGame_hall(wnd)
 	end
 
 	yinghuashu.script[XE_LBUP] = function()
-		if liuguangdianji:IsVisible() then
+		if liuguangdianji:IsVisible() == false then
 			yinghuashudianji:SetVisible(0)
 			backgroundeffect:SetVisible(0)
 		else
@@ -979,7 +978,7 @@ function InitMainGame_hall(wnd)
 	end
 
 	luoxue.script[XE_LBUP] = function()
-		if liuguangdianji:IsVisible() then
+		if liuguangdianji:IsVisible() == false then
 			luoxuedianji:SetVisible(0)
 			backgroundeffect:SetVisible(0)
 		else
@@ -993,7 +992,7 @@ function InitMainGame_hall(wnd)
 	end
 
 	yudi.script[XE_LBUP] = function()
-		if liuguangdianji:IsVisible() then
+		if liuguangdianji:IsVisible() == false then
 			yudidianji:SetVisible(0)
 			backgroundeffect:SetVisible(0)
 		else
@@ -1007,7 +1006,7 @@ function InitMainGame_hall(wnd)
 	end
 
 	pianyi.script[XE_LBUP] = function()
-		if liuguangdianji:IsVisible() then
+		if liuguangdianji:IsVisible() == false then
 			pianyidianji:SetVisible(0)
 			backgroundeffect:SetVisible(0)
 		else
