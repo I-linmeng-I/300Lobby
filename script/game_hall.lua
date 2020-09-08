@@ -1041,9 +1041,20 @@ function InitMainGame_hall(wnd)
 		end
 	end
     --
+	local beijingyulanpad = CreateWindow(beijing_BKWND.id,10,54,460,220)
+	local test123 = beijingyulanpad:AddImage(path.."checkboxhave_login.BMP",0,0,460,220)--改这个大小来改底板面板大小
 
 	for i=1,7 do
-		beijingyulan[i] = beijing_BKWND:AddImage(path.."checkboxhave_login.BMP",i*25,20,24,24)
+		beijingyulan[i] = beijingyulanpad:AddImage(path.."checkboxhave_login.BMP",i*25,20,24,24)
+	end
+	beijingyulanpad:EnableEvent(XE_MOUSEWHEEL)
+	beijingyulanpad.script[XE_MOUSEWHEEL] = function()
+		local updown  = XGetMsgParam0()
+		if updown <0 then
+
+		elseif updown > 0 then
+
+		end
 	end
 	--特效
 
