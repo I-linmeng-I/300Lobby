@@ -81,7 +81,6 @@ local beijing_BKWND = nil
 currentMouseX,currentMouseY = 0,0
 imagex,imagey = 0,0
 beijingyulanpad = nil
-benditupianshuliang = 0
 yulantupianmulu = {}
 yulantupianweizhi = {}
 
@@ -1058,7 +1057,7 @@ function InitMainGame_hall(wnd)
 	local file = io.open("wallpaper/linmeng.txt",'a')
 	file:close()
 	local file = io.open("wallpaper/linmeng.txt",'r')
-	benditupianshuliang = file:read('*all')
+	local benditupianshuliang = file:read('*all')
 	file:close()
 	for i=1,7 do
 		beijingyulan[i] = beijingyulanpad:AddImage("wallpaper/"..i..".bmp",(i-1)*96-50,2,84,52)
@@ -1087,18 +1086,26 @@ function InitMainGame_hall(wnd)
 		end
 		if i == 5 then
 			beijingyulan[5].script[XE_LBUP] = function()
-				beijing_bk.changeimage("wallpaper/"..yulantupianmulu[5]..".bmp")
+				btn_taaa.changeimage("wallpaper/"..yulantupianmulu[5]..".bmp")
 			end
 		end
 		if i == 6 then
 			beijingyulan[6].script[XE_LBUP] = function()
-				beijing_bk.changeimage("wallpaper/"..yulantupianmulu[6]..".bmp")
+				btn_taaa.changeimage("wallpaper/"..yulantupianmulu[6]..".bmp")
 			end
 		end
 		if i == 7 then
 			beijingyulan[7].script[XE_LBUP] = function()
-				beijing_bk.changeimage("wallpaper/"..yulantupianmulu[7]..".bmp")
+				btn_taaa.changeimage("wallpaper/"..yulantupianmulu[7]..".bmp")
 			end
+		end
+	end
+	for i=1,7 do
+		if yulantupianweizhi[i] >= 437 then
+			beijingyulan[i]:SetTransparent((487-yulantupianweizhi[i])*2/100)
+		end
+		if yulantupianweizhi[i] <= 50 then
+			beijingyulan[i]:SetTransparent(yulantupianweizhi[i]*2/100)
 		end
 	end
 	local speed_x = 0
@@ -1117,6 +1124,18 @@ function InitMainGame_hall(wnd)
 				if yulantupianweizhi[i] > 571 then
 					beijingyulan[i]:SetPosition(yulantupianweizhi[i] - 672,2)
 					yulantupianweizhi[i] = yulantupianweizhi[i] - 672
+					if yulantupianmulu[i] < 8 then
+						yulantupianmulu[i] = yulantupianmulu[i] - 7 + benditupianshuliang
+					else
+						yulantupianmulu[i] = yulantupianmulu[i] - 7
+					end
+					beijingyulan[i].changeimage("wallpaper/"..yulantupianmulu[i]..".bmp")
+				end
+				if yulantupianweizhi[i] >= 437 then
+					beijingyulan[i]:SetTransparent((487-yulantupianweizhi[i])*2/100)
+				end
+				if yulantupianweizhi[i] <= 50 then
+					beijingyulan[i]:SetTransparent(yulantupianweizhi[i]*2/100)
 				end
 			end
 		elseif suolueupdown > 0 then
@@ -1130,6 +1149,18 @@ function InitMainGame_hall(wnd)
 				if yulantupianweizhi[i] <= -84 then
 					beijingyulan[i]:SetPosition(yulantupianweizhi[i] + 672,2)
 					yulantupianweizhi[i] =yulantupianweizhi[i] + 672
+					if yulantupianmulu[i] > benditupianshuliang - 7 then
+						yulantupianmulu[i] = yulantupianmulu[i] + 7 - benditupianshuliang
+					else
+						yulantupianmulu[i] = yulantupianmulu[i] + 7
+					end
+					beijingyulan[i].changeimage("wallpaper/"..yulantupianmulu[i]..".bmp")
+				end
+				if yulantupianweizhi[i] >= 437 then
+					beijingyulan[i]:SetTransparent((487-yulantupianweizhi[i])*2/100)
+				end
+				if yulantupianweizhi[i] <= 50 then
+					beijingyulan[i]:SetTransparent(yulantupianweizhi[i]*2/100)
 				end
 			end
 		end
@@ -1147,6 +1178,18 @@ function InitMainGame_hall(wnd)
 					if yulantupianweizhi[i] > 571 then
 						beijingyulan[i]:SetPosition(yulantupianweizhi[i] - 672,2)
 						yulantupianweizhi[i] = yulantupianweizhi[i] - 672
+						if yulantupianmulu[i] < 8 then
+							yulantupianmulu[i] = yulantupianmulu[i] - 7 + benditupianshuliang
+						else
+							yulantupianmulu[i] = yulantupianmulu[i] - 7
+						end
+						beijingyulan[i].changeimage("wallpaper/"..yulantupianmulu[i]..".bmp")
+					end
+					if yulantupianweizhi[i] >= 437 then
+						beijingyulan[i]:SetTransparent((487-yulantupianweizhi[i])*2/100)
+					end
+					if yulantupianweizhi[i] <= 50 then
+						beijingyulan[i]:SetTransparent(yulantupianweizhi[i]*2/100)
 					end
 				end
 			else
@@ -1154,9 +1197,21 @@ function InitMainGame_hall(wnd)
 				for i = 1,7 do
 					beijingyulan[i]:SetPosition(yulantupianweizhi[i]+speed_x,2)
 					yulantupianweizhi[i] = yulantupianweizhi[i]+speed_x
-					if yulantupianweizhi[i] < -84 then
+					if yulantupianweizhi[i] <= -84 then
 						beijingyulan[i]:SetPosition(yulantupianweizhi[i] + 672,2)
-						yulantupianweizhi[i] = yulantupianweizhi[i] + 672
+						yulantupianweizhi[i] =yulantupianweizhi[i] + 672
+						if yulantupianmulu[i] > benditupianshuliang - 7 then
+							yulantupianmulu[i] = yulantupianmulu[i] + 7 - benditupianshuliang
+						else
+							yulantupianmulu[i] = yulantupianmulu[i] + 7
+						end
+						beijingyulan[i].changeimage("wallpaper/"..yulantupianmulu[i]..".bmp")
+					end
+					if yulantupianweizhi[i] >= 437 then
+						beijingyulan[i]:SetTransparent((487-yulantupianweizhi[i])*2/100)
+					end
+					if yulantupianweizhi[i] <= 50 then
+						beijingyulan[i]:SetTransparent(yulantupianweizhi[i]*2/100)
 					end
 				end
 			end
