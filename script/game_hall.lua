@@ -1031,7 +1031,6 @@ function InitMainGame_hall(wnd)
 			btn_taaa:SetPosition(-110 + imagex,-55 + imagey)
 		end
 	end
-	btn_taaa.script[XE_UNHOVER]
 
 	pianyi.script[XE_LBUP] = function()
 		if pianyidianji:IsVisible() then
@@ -1043,7 +1042,7 @@ function InitMainGame_hall(wnd)
 	end
     --
 
-	for i=1,7 then
+	for i=1,7 do
 		beijingyulan[i] = beijing_BKWND:AddImage(path.."checkboxhave_login.BMP",i*25,20,24,24)
 	end
 	--ÌØÐ§
