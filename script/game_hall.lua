@@ -1046,8 +1046,8 @@ function InitMainGame_hall(wnd)
 		end
 	end
     --
-	beijingyulanpad = CreateWindow(beijing_BKWND.id,17,4,571,56)
-	local test123 = beijingyulanpad:AddImage(path.."checkboxhave_login.BMP",17,4,571,56)--改这个大小来改底板面板大小
+	beijingyulanpad = CreateWindow(beijing_BKWND.id,15,4,571,56)
+	local test123 = beijingyulanpad:AddImage(path.."xzbk.png",15,4,571,56)--改这个大小来改底板面板大小
 	local file = io.open("wallpaper/linmeng.txt",'a')
 	file:close()
 	local file = io.open("wallpaper/linmeng.txt",'r')
