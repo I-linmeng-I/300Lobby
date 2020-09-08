@@ -64,6 +64,7 @@ local playlistname = {}
 local playlistimagename = {}
 local playlistimagenamename = {}
 local songdelectbutton = {}
+local beijingyulan = {}
 local patspeed_X = 0
 local patspeed_Y = 0
 local walking = 1
@@ -1042,6 +1043,9 @@ function InitMainGame_hall(wnd)
 	end
     --
 
+	for i=1,7 then
+		beijingyulan[i] = beijing_BKWND:AddImage(path.."checkboxhave_login.BMP",i*25,20,24,24)
+	end
 	--ÌØÐ§
 
     --±³¾°ÇÐ»»½áÊø
