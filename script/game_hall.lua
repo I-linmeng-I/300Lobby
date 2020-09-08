@@ -80,6 +80,10 @@ nowplayingnamename = ""
 local beijing_BKWND = nil
 currentMouseX,currentMouseY = 0,0
 imagex,imagey = 0,0
+beijingyulanpad = nil
+benditupianshuliang = 0
+yulantupianmulu = {}
+yulantupianweizhi = {}
 
 local btn_gotoshop = nil
 local btn_herodetail = nil
@@ -256,7 +260,7 @@ function InitMainGame_hall(wnd)
 	--底图背景
 	MainHall_BK = wnd:AddImage(path_MailHallSkin,0,0,1280,800)
 	MainHall_Effect = wnd:AddEffect(Dynamic_BG,0,0,1280,800)
-	btn_taaa = wnd:AddImage("musicplayer/texture/bk.png",-110,-55,1500,910)
+	btn_taaa = wnd:AddImage("wallpaper/1.bmp",-110,-55,1500,910)
 	btn_taaa:SetTouchEnabled(1)
 	local backgroundeffect = wnd:AddEffect("../Data/Magic/Common/UI/changwai/183Skin1/183Skin1_od.x",0,0,1280,800)
 	backgroundeffect:SetTouchEnabled(0)
@@ -1041,21 +1045,102 @@ function InitMainGame_hall(wnd)
 			pianyidianji:SetVisible(1)
 		end
 	end
-    --
-	local beijingyulanpad = CreateWindow(beijing_BKWND.id,10,54,580,220)
-	local test123 = beijingyulanpad:AddImage(path.."xzbk.png",17,4,571,54)--改这个大小来改底板面板大小
+    
 
+
+
+	beijingyulanpad = CreateWindow(beijing_BKWND.id,17,4,571,56)
+	local test123 = beijingyulanpad:AddImage(path.."xzbk.png",17,4,571,56)--改这个大小来改底板面板大小
+	local file = io.open("wallpaper/linmeng.txt",'a')
+	file:close()
+	local file = io.open("wallpaper/linmeng.txt",'r')
+	benditupianshuliang = file:read('*all')
+	file:close()
 	for i=1,7 do
-		beijingyulan[i] = beijingyulanpad:AddImage("wallpaper/"..i..".bmp",(i-1)*96-55,6,84,52)
-
+		beijingyulan[i] = beijingyulanpad:AddImage("wallpaper/"..i..".bmp",(i-1)*96-50,6,84,52)
+		yulantupianweizhi[i] = (i-1)*96-50
+		beijingyulan[i]:SetTouchEnabled(1)
+		yulantupianmulu[i] = i
+		if i == 1 then
+			beijingyulan[1].script[XE_LBUP] = function()
+				beijing_bk.changeimage("wallpaper/"..yulantupianmulu[1]..".bmp")
+			end
+		end
+		if i == 2 then
+			beijingyulan[2].script[XE_LBUP] = function()
+				beijing_bk.changeimage("wallpaper/"..yulantupianmulu[2]..".bmp")
+			end
+		end
+		if i == 3 then
+			beijingyulan[3].script[XE_LBUP] = function()
+				beijing_bk.changeimage("wallpaper/"..yulantupianmulu[3]..".bmp")
+			end
+		end
+		if i == 4 then
+			beijingyulan[4].script[XE_LBUP] = function()
+				beijing_bk.changeimage("wallpaper/"..yulantupianmulu[4]..".bmp")
+			end
+		end
+		if i == 5 then
+			beijingyulan[5].script[XE_LBUP] = function()
+				beijing_bk.changeimage("wallpaper/"..yulantupianmulu[5]..".bmp")
+			end
+		end
+		if i == 6 then
+			beijingyulan[6].script[XE_LBUP] = function()
+				beijing_bk.changeimage("wallpaper/"..yulantupianmulu[6]..".bmp")
+			end
+		end
+		if i == 7 then
+			beijingyulan[7].script[XE_LBUP] = function()
+				beijing_bk.changeimage("wallpaper/"..yulantupianmulu[7]..".bmp")
+			end
+		end
 	end
+	local speed_x = 0
 	beijingyulanpad:EnableEvent(XE_MOUSEWHEEL)
 	beijingyulanpad.script[XE_MOUSEWHEEL] = function()
 		local updown  = XGetMsgParam0()
 		if updown <0 then
-
+			speed_x = speed_x -0.3 -- 滑动加速度
+			if speed_x < -2 then--最高时速
+				speed_x = -2 
+			end 
+			for i = 1,7 do
+				beijingyulan[i]:SetPosition(yulantupianweizhi[i]+speed_x,6)
+				yulantupianweizhi[i] = yulantupianweizhi[i]+speed_x
+			end
 		elseif updown > 0 then
-
+			speed_x = speed_x +0.3 -- 滑动加速度
+			if speed_x > 2 then--最高时速
+				speed_x = 2 
+			end 
+			for i = 1,7 do
+				beijingyulan[i]:SetPosition(yulantupianweizhi[i]+speed_x,6)
+				yulantupianweizhi[i] = yulantupianweizhi[i]+speed_x
+			end
+		end
+	end
+	beijingyulanpad:ToggleBehaviour(XE_ONUPDATE, 1)
+	beijingyulanpad:ToggleEvent(XE_ONUPDATE, 1)
+	beijingyulanpad.script[XE_ONUPDATE] = function()
+		if speed_x ~= 0 then
+			if speed_x > 0 then
+				speed_x = speed_x - 0.005
+				for i = 1,7 do
+					beijingyulan[i]:SetPosition(yulantupianweizhi[i]+speed_x,6)
+					yulantupianweizhi[i] = yulantupianweizhi[i]+speed_x
+				end
+			else
+				speed_x = speed_x + 0.005
+				for i = 1,7 do
+					beijingyulan[i]:SetPosition(yulantupianweizhi[i]+speed_x,6)
+					yulantupianweizhi[i] = yulantupianweizhi[i]+speed_x
+				end
+			end
+		end
+		if speed_x > -0.01 and speed_x<0.01 then
+			speed_x = 0
 		end
 	end
 	--特效
