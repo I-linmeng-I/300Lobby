@@ -951,8 +951,15 @@ function InitMainGame_hall(wnd)
     yudi:SetTouchEnabled(1)
     local yudidianji = yudi:AddImage(path.."checkboxhave_login.BMP",0,0,24,24)
     yudidianji:SetTouchEnabled(0)
-    yudi:AddFont("雨滴特效",15,0,24,0,500,20,0xffffff)
+	yudi:AddFont("雨滴特效",15,0,24,0,500,20,0xffffff)
 	
+	local bkadd = beijing_BKWND:AddButton(path.."base_server1.BMP",path.."base_server2.BMP",path.."base_server3.BMP",85+87,115,105,30)
+    bkadd:AddFont("添加",15,8,0,0,105,30,0x1e1e1e)
+
+	local renovate = beijing_BKWND:AddButton(path.."base_server1.BMP",path.."base_server2.BMP",path.."base_server3.BMP",85+254,115,105,30)
+    renovate:AddFont("刷新",15,8,0,0,105,30,0x1e1e1e)
+
+
 	local pianyi = beijing_BKWND:AddImage(path.."checkbox_login.BMP",443,-55,24,24)
     pianyi:SetTouchEnabled(1)
     local pianyidianji = pianyi:AddImage(path.."checkboxhave_login.BMP",0,0,24,24)
@@ -1046,15 +1053,15 @@ function InitMainGame_hall(wnd)
 		end
 	end
     --
-	beijingyulanpad = CreateWindow(beijing_BKWND.id,15,4,571,56)
-	local test123 = beijingyulanpad:AddImage(path.."xzbk.png",15,4,571,56)--改这个大小来改底板面板大小
+	beijingyulanpad = CreateWindow(beijing_BKWND.id,28,8,571,56)
+	local test123 = beijingyulanpad:AddImage(path.."xzbk.png",0,0,571,56)--改这个大小来改底板面板大小
 	local file = io.open("wallpaper/linmeng.txt",'a')
 	file:close()
 	local file = io.open("wallpaper/linmeng.txt",'r')
 	benditupianshuliang = file:read('*all')
 	file:close()
 	for i=1,7 do
-		beijingyulan[i] = beijingyulanpad:AddImage("wallpaper/"..i..".bmp",(i-1)*96-50,6,84,52)
+		beijingyulan[i] = beijingyulanpad:AddImage("wallpaper/"..i..".bmp",(i-1)*96-50,2,84,52)
 		yulantupianweizhi[i] = (i-1)*96-50
 		beijingyulan[i]:SetTouchEnabled(1)
 		yulantupianmulu[i] = i
