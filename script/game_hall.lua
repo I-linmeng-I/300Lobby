@@ -1045,16 +1045,16 @@ function InitMainGame_hall(wnd)
 			pianyidianji:SetVisible(1)
 		end
 	end
-    --
-	beijingyulanpad = CreateWindow(beijing_BKWND.id,17,4,571,56)
-	local test123 = beijingyulanpad:AddImage(path.."checkboxhave_login.BMP",17,4,571,56)--改这个大小来改底板面板大小
+
+	beijingyulanpad = CreateWindow(beijing_BKWND.id,28,8,571,56)
+	local test123 = beijingyulanpad:AddImage("../data/ui/main/xzbk.png",1,0,569,56)--改这个大小来改底板面板大小
 	local file = io.open("wallpaper/linmeng.txt",'a')
 	file:close()
 	local file = io.open("wallpaper/linmeng.txt",'r')
 	benditupianshuliang = file:read('*all')
 	file:close()
 	for i=1,7 do
-		beijingyulan[i] = beijingyulanpad:AddImage("wallpaper/"..i..".bmp",(i-1)*96-50,6,84,52)
+		beijingyulan[i] = beijingyulanpad:AddImage("wallpaper/"..i..".bmp",(i-1)*96-50,2,84,52)
 		yulantupianweizhi[i] = (i-1)*96-50
 		beijingyulan[i]:SetTouchEnabled(1)
 		yulantupianmulu[i] = i
@@ -1095,50 +1095,70 @@ function InitMainGame_hall(wnd)
 		end
 	end
 	local speed_x = 0
+	local suolueupdown = 0
 	beijingyulanpad:EnableEvent(XE_MOUSEWHEEL)
 	beijingyulanpad.script[XE_MOUSEWHEEL] = function()
-		local updown  = XGetMsgParam0()
-		if updown <0 then
-			speed_x = speed_x -0.3 -- 滑动加速度
-			if speed_x < -2 then--最高时速
-				speed_x = -2 
-			end 
-			for i = 1,7 do
-				beijingyulan[i]:SetPosition(yulantupianweizhi[i]+speed_x,6)
-				yulantupianweizhi[i] = yulantupianweizhi[i]+speed_x
-			end
-		elseif updown > 0 then
+		suolueupdown  = XGetMsgParam0()
+		if suolueupdown <0 then
 			speed_x = speed_x +0.3 -- 滑动加速度
-			if speed_x > 2 then--最高时速
-				speed_x = 2 
+			if speed_x > 3 then--最高时速
+				speed_x = 3 
 			end 
 			for i = 1,7 do
-				beijingyulan[i]:SetPosition(yulantupianweizhi[i]+speed_x,6)
+				beijingyulan[i]:SetPosition(yulantupianweizhi[i]+speed_x,2)
 				yulantupianweizhi[i] = yulantupianweizhi[i]+speed_x
+				if yulantupianweizhi[i] > 571 then
+					beijingyulan[i]:SetPosition(yulantupianweizhi[i] - 672,2)
+					yulantupianweizhi[i] = yulantupianweizhi[i] - 672
+				end
+			end
+		elseif suolueupdown > 0 then
+			speed_x = speed_x -0.3 -- 滑动加速度
+			if speed_x < -3 then--最高时速
+				speed_x = -3 
+			end 
+			for i = 1,7 do
+				beijingyulan[i]:SetPosition(yulantupianweizhi[i]+speed_x,2)
+				yulantupianweizhi[i] = yulantupianweizhi[i]+speed_x
+				if yulantupianweizhi[i] <= -84 then
+					beijingyulan[i]:SetPosition(yulantupianweizhi[i] + 672,2)
+					yulantupianweizhi[i] =yulantupianweizhi[i] + 672
+				end
 			end
 		end
+		suolueupdown = 0 
 	end
 	beijingyulanpad:ToggleBehaviour(XE_ONUPDATE, 1)
 	beijingyulanpad:ToggleEvent(XE_ONUPDATE, 1)
 	beijingyulanpad.script[XE_ONUPDATE] = function()
-		if speed_x ~= 0 then
+		if speed_x ~= 0 and suolueupdown == 0 then
 			if speed_x > 0 then
 				speed_x = speed_x - 0.005
 				for i = 1,7 do
-					beijingyulan[i]:SetPosition(yulantupianweizhi[i]+speed_x,6)
+					beijingyulan[i]:SetPosition(yulantupianweizhi[i]+speed_x,2)
 					yulantupianweizhi[i] = yulantupianweizhi[i]+speed_x
+					if yulantupianweizhi[i] > 571 then
+						beijingyulan[i]:SetPosition(yulantupianweizhi[i] - 672,2)
+						yulantupianweizhi[i] = yulantupianweizhi[i] - 672
+					end
 				end
 			else
 				speed_x = speed_x + 0.005
 				for i = 1,7 do
-					beijingyulan[i]:SetPosition(yulantupianweizhi[i]+speed_x,6)
+					beijingyulan[i]:SetPosition(yulantupianweizhi[i]+speed_x,2)
 					yulantupianweizhi[i] = yulantupianweizhi[i]+speed_x
+					if yulantupianweizhi[i] < -84 then
+						beijingyulan[i]:SetPosition(yulantupianweizhi[i] + 672,2)
+						yulantupianweizhi[i] = yulantupianweizhi[i] + 672
+					end
 				end
 			end
 		end
 		if speed_x > -0.01 and speed_x<0.01 then
 			speed_x = 0
 		end
+		--24
+		--595
 	end
 	--特效
 
