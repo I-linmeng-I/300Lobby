@@ -1013,21 +1013,24 @@ function InitMainGame_hall(wnd)
 	btn_taaa.script[XE_ONUPDATE] = function()
 		if pianyidianji:IsVisible() then
 			currentMouseX,currentMouseY = btn_taaa:GetLocalMousePosition()
-			if currentMouseX < 440 then
-				imagex = (440-currentMouseX) /8
+			if currentMouseX <748 then
+				imagex = (748 - currentMouseX)/748 * 110
 			end
-			if currentMouseY < 220 then
-				imagey = (220-currentMouseY) /8
+			if currentMouseX > 748 then
+				imagex = -((currentMouseX-748)/748 * 110)
 			end
-			if currentMouseX > 840 then
-				imagex = -(currentMouseX - 840) /8
+			--currentMouseX == 1389
+			--Y 854
+			if currentMouseY <452 then
+				imagey = (452 - currentMouseY)/452 * 55
 			end
-			if currentMouseY > 680 then
-				imagey = -(currentMouseY - 680) /8
+			if currentMouseY > 452 then
+				imagey = -((currentMouseY-452)/452 * 55)
 			end
 			btn_taaa:SetPosition(-110 + imagex,-55 + imagey)
 		end
 	end
+	btn_taaa.script[XE_UNHOVER]
 
 	pianyi.script[XE_LBUP] = function()
 		if pianyidianji:IsVisible() then
@@ -1037,7 +1040,7 @@ function InitMainGame_hall(wnd)
 			pianyidianji:SetVisible(1)
 		end
 	end
-    
+    --
 
 	--ÌØÐ§
 
