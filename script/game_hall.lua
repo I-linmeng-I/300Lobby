@@ -1045,36 +1045,36 @@ function InitMainGame_hall(wnd)
 		end
 	end
     --
-	beijingyulanpad = CreateWindow(beijing_BKWND.id,10,54,460,220)
-	local test123 = beijingyulanpad:AddImage(path.."checkboxhave_login.BMP",0,0,460,220)--改这个大小来改底板面板大小
+	beijingyulanpad = CreateWindow(beijing_BKWND.id,0,4,571,56)
+	local test123 = beijingyulanpad:AddImage(path.."checkboxhave_login.BMP",0,4,571,56)--改这个大小来改底板面板大小
 	local file = io.open("wallpaper/linmeng.txt",'a')
 	file:close()
 	local file = io.open("wallpaper/linmeng.txt",'r')
 	benditupianshuliang = file:read('*all')
 	file:close()
 	for i=1,7 do
-		beijingyulan[i] = beijingyulanpad:AddImage("wallpaper/"..i..".bmp",(i-1)*75,6,68,42)
-		yulantupianweizhi[i] = (i-1)*75
+		beijingyulan[i] = beijingyulanpad:AddImage("wallpaper/"..i..".bmp",(i-1)*96-50,6,84,52)
+		yulantupianweizhi[i] = (i-1)*96-50
 		beijingyulan[i]:SetTouchEnabled(1)
 		yulantupianmulu[i] = i
 		if i == 1 then
 			beijingyulan[1].script[XE_LBUP] = function()
-				beijing_bk.changeimage("wallpaper/"..yulantupianmulu[1]..".bmp")
+				btn_taaa.changeimage("wallpaper/"..yulantupianmulu[1]..".bmp")
 			end
 		end
 		if i == 2 then
 			beijingyulan[2].script[XE_LBUP] = function()
-				beijing_bk.changeimage("wallpaper/"..yulantupianmulu[2]..".bmp")
+				btn_taaa.changeimage("wallpaper/"..yulantupianmulu[2]..".bmp")
 			end
 		end
 		if i == 3 then
 			beijingyulan[3].script[XE_LBUP] = function()
-				beijing_bk.changeimage("wallpaper/"..yulantupianmulu[3]..".bmp")
+				btn_taaa.changeimage("wallpaper/"..yulantupianmulu[3]..".bmp")
 			end
 		end
 		if i == 4 then
 			beijingyulan[4].script[XE_LBUP] = function()
-				beijing_bk.changeimage("wallpaper/"..yulantupianmulu[4]..".bmp")
+				btn_taaa.changeimage("wallpaper/"..yulantupianmulu[4]..".bmp")
 			end
 		end
 		if i == 5 then
