@@ -916,6 +916,7 @@ function InitMainGame_hall(wnd)
 		youwin:SetVisible(0)
 		youwin.changeimage("mine/win.BMP")--"../data/Minesweeper/win.BMP"
 		shengyuleishuliang = 40
+		saoleicount_bkwenzi:SetFontText("Ê£ÓàÀ×ÊýÁ¿£º"..shengyuleishuliang,0xFF0000)
 	end
 
 	saolei_BKWND:SetVisible(0)
