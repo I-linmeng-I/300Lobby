@@ -925,7 +925,8 @@ function InitMainGame_hall(wnd)
     --±³¾°ÇÐ»»¿ªÊ¼
     beijing_BKWND = CreateWindow(buttonpad.id,0,150,409,233)
     beijing_BKWND:SetVisible(0)
-    local beijing_bk = beijing_BKWND:AddImage(path.."txbk.BMP",0,-121,628,406)--±³¾°
+	local beijing_bk = beijing_BKWND:AddImage(path.."txbk.BMP",0,-121,628,406)--±³¾°
+	local beijing_bkcase = beijing_BKWND:AddImage(path.."txbk1.BMP",0,-121,628,406)--±³¾°
 	beijing_bk:AddFont("±³¾°ÇÐ»»&ÌØÐ§¿ØÖÆ",15,8,-214,-21,200,33,0xffffff)
 	
     local liuguang = beijing_BKWND:AddImage(path.."checkbox_login.BMP",43,-55,24,24)
