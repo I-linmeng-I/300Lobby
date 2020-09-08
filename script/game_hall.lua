@@ -921,7 +921,8 @@ function InitMainGame_hall(wnd)
     --背景切换开始
     beijing_BKWND = CreateWindow(buttonpad.id,0,150,409,233)
     beijing_BKWND:SetVisible(0)
-    local beijing_bk = beijing_BKWND:AddImage(path.."txbk.BMP",0,-121,628,406)--背景
+	local beijing_bk = beijing_BKWND:AddImage(path.."txbk.BMP",0,-121,628,406)--背景
+	local beijing_bkcase = beijing_BKWND:AddImage(path.."txbk1.BMP",0,-121,628,406)--背景
 	beijing_bk:AddFont("背景切换&特效控制",15,8,-214,-21,200,33,0xffffff)
 	
     local liuguang = beijing_BKWND:AddImage(path.."checkbox_login.BMP",43,-55,24,24)
@@ -1041,11 +1042,12 @@ function InitMainGame_hall(wnd)
 		end
 	end
     --
-	local beijingyulanpad = CreateWindow(beijing_BKWND.id,10,54,460,220)
-	local test123 = beijingyulanpad:AddImage(path.."checkboxhave_login.BMP",0,0,460,220)--改这个大小来改底板面板大小
+	local beijingyulanpad = CreateWindow(beijing_BKWND.id,10,54,580,220)
+	local test123 = beijingyulanpad:AddImage(path.."xzbk.png",17,4,571,54)--改这个大小来改底板面板大小
 
 	for i=1,7 do
-		beijingyulan[i] = beijingyulanpad:AddImage(path.."checkboxhave_login.BMP",i*25,20,24,24)
+		beijingyulan[i] = beijingyulanpad:AddImage("wallpaper/"..i..".bmp",(i-1)*96-55,6,84,52)
+
 	end
 	beijingyulanpad:EnableEvent(XE_MOUSEWHEEL)
 	beijingyulanpad.script[XE_MOUSEWHEEL] = function()
