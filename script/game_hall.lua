@@ -951,8 +951,15 @@ function InitMainGame_hall(wnd)
     yudi:SetTouchEnabled(1)
     local yudidianji = yudi:AddImage(path.."checkboxhave_login.BMP",0,0,24,24)
     yudidianji:SetTouchEnabled(0)
-    yudi:AddFont("雨滴特效",15,0,24,0,500,20,0xffffff)
+	yudi:AddFont("雨滴特效",15,0,24,0,500,20,0xffffff)
 	
+	local bkadd = beijing_BKWND:AddButton(path.."base_server1.BMP",path.."base_server2.BMP",path.."base_server3.BMP",85+87,115,105,30)
+    bkadd:AddFont("添加",15,8,0,0,105,30,0x1e1e1e)
+
+	local renovate = beijing_BKWND:AddButton(path.."base_server1.BMP",path.."base_server2.BMP",path.."base_server3.BMP",85+254,115,105,30)
+    renovate:AddFont("刷新",15,8,0,0,105,30,0x1e1e1e)
+
+
 	local pianyi = beijing_BKWND:AddImage(path.."checkbox_login.BMP",443,-55,24,24)
     pianyi:SetTouchEnabled(1)
     local pianyidianji = pianyi:AddImage(path.."checkboxhave_login.BMP",0,0,24,24)
