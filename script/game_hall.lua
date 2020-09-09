@@ -935,24 +935,6 @@ function InitMainGame_hall(wnd)
     liuguangdianji:SetTouchEnabled(0)
     liuguang:AddFont("流光特效",15,0,24,0,500,20,0xffffff)
 	
-	local yinghuashu = beijing_BKWND:AddImage(path.."checkbox_login.BMP",110+155,-50,24,24)
-    yinghuashu:SetTouchEnabled(1)
-    local yinghuashudianji = yinghuashu:AddImage(path.."checkboxhave_login.BMP",0,0,24,24)
-    yinghuashudianji:SetTouchEnabled(0)
-    yinghuashu:AddFont("樱花特效",15,0,24,0,500,20,0xffffff)
-	
-    local luoxue = beijing_BKWND:AddImage(path.."checkbox_login.BMP",110+310,-50,24,24)
-    luoxue:SetTouchEnabled(1)
-    local luoxuedianji = luoxue:AddImage(path.."checkboxhave_login.BMP",0,0,24,24)
-    luoxuedianji:SetTouchEnabled(0)
-    luoxue:AddFont("落雪特效",15,0,24,0,500,20,0xffffff)
-	
-	local yudi = beijing_BKWND:AddImage(path.."checkbox_login.BMP",110,-4,24,24)
-    yudi:SetTouchEnabled(1)
-    local yudidianji = yudi:AddImage(path.."checkboxhave_login.BMP",0,0,24,24)
-    yudidianji:SetTouchEnabled(0)
-	yudi:AddFont("雨滴特效",15,0,24,0,500,20,0xffffff)
-	
 	local bkadd = beijing_BKWND:AddButton(path.."base_server1.BMP",path.."base_server2.BMP",path.."base_server3.BMP",85-10,155+29,105,30)
     bkadd:AddFont("添加",15,8,0,0,105,30,0x1e1e1e)
 
@@ -963,7 +945,7 @@ function InitMainGame_hall(wnd)
 	random:AddFont("随机",15,8,0,0,105,30,0x1e1e1e)
 
 
-	local pianyi = beijing_BKWND:AddImage(path.."checkbox_login.BMP",110+155,-4,24,24)
+	local pianyi = beijing_BKWND:AddImage(path.."checkbox_login.BMP",110,-4,24,24)
     pianyi:SetTouchEnabled(1)
     local pianyidianji = pianyi:AddImage(path.."checkboxhave_login.BMP",0,0,24,24)
     pianyidianji:SetTouchEnabled(0)
