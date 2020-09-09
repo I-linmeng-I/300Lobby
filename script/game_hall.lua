@@ -935,6 +935,8 @@ function InitMainGame_hall(wnd)
     liuguangdianji:SetTouchEnabled(0)
     liuguang:AddFont("流光特效",15,0,24,0,500,20,0xffffff)
 	
+	
+
 	local bkadd = beijing_BKWND:AddButton(path.."base_server1.BMP",path.."base_server2.BMP",path.."base_server3.BMP",85-10,155+29,105,30)
     bkadd:AddFont("添加",15,8,0,0,105,30,0x1e1e1e)
 
@@ -951,61 +953,18 @@ function InitMainGame_hall(wnd)
     pianyidianji:SetTouchEnabled(0)
     pianyi:AddFont("鼠标偏移",15,0,24,0,500,20,0xffffff)
 	liuguangdianji:SetVisible(0)
-	yinghuashudianji:SetVisible(0)
-	luoxuedianji:SetVisible(0)
-	yudidianji:SetVisible(0)
 	liuguang.script[XE_LBUP] = function()
 		if liuguangdianji:IsVisible() then
 			liuguangdianji:SetVisible(0)
 			backgroundeffect:SetVisible(0)
 		else
 			liuguangdianji:SetVisible(1)
-			yinghuashudianji:SetVisible(0)
-			luoxuedianji:SetVisible(0)
-			yudidianji:SetVisible(0)
 			backgroundeffect:SetVisible(1)
 			backgroundeffect:ChangeEffect("../Data/Magic/Common/UI/changwai/183Skin1/183Skin1_od.x")
 		end
 	end
 
-	yinghuashu.script[XE_LBUP] = function()
-		if yinghuashudianji:IsVisible() then
-			yinghuashudianji:SetVisible(0)
-			backgroundeffect:SetVisible(0)
-		else
-			liuguangdianji:SetVisible(0)
-			yinghuashudianji:SetVisible(1)
-			luoxuedianji:SetVisible(0)
-			yudidianji:SetVisible(0)
-			backgroundeffect:SetVisible(1)
-		end
-	end
-
-	luoxue.script[XE_LBUP] = function()
-		if luoxuedianji:IsVisible() then
-			luoxuedianji:SetVisible(0)
-			backgroundeffect:SetVisible(0)
-		else
-			liuguangdianji:SetVisible(0)
-			yinghuashudianji:SetVisible(0)
-			luoxuedianji:SetVisible(1)
-			yudidianji:SetVisible(0)
-			backgroundeffect:SetVisible(1)
-		end
-	end
-
-	yudi.script[XE_LBUP] = function()
-		if yudidianji:IsVisible() then
-			yudidianji:SetVisible(0)
-			backgroundeffect:SetVisible(0)
-		else
-			liuguangdianji:SetVisible(0)
-			yinghuashudianji:SetVisible(0)
-			luoxuedianji:SetVisible(0)
-			yudidianji:SetVisible(1)
-			backgroundeffect:SetVisible(1)
-		end
-	end
+	
 	btn_taaa:ToggleBehaviour(XE_ONUPDATE, 1)
 	btn_taaa:ToggleEvent(XE_ONUPDATE, 1)
 	btn_taaa.script[XE_ONUPDATE] = function()
