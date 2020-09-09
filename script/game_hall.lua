@@ -1063,6 +1063,7 @@ function InitMainGame_hall(wnd)
 	local file = io.open("wallpaper/linmeng.txt",'r')
 	local benditupianshuliang = file:read('*all')
 	file:close()
+	local israndom = false
 	for i=1,7 do
 		beijingyulan[i] = beijingyulanpad:AddImage("wallpaper/"..i..".bmp",(i-1)*96-50,2,84,52)
 		yulantupianweizhi[i] = (i-1)*96-50
@@ -1222,12 +1223,24 @@ function InitMainGame_hall(wnd)
 		end
 		if speed_x > -0.01 and speed_x<0.01 then
 			speed_x = 0
+			if israndom == true then
+				for i = 1,7 do
+					if yulantupianweizhi[i] >200 and yulantupianweizhi[i] <400 then
+						btn_taaa.changeimage("wallpaper/"..yulantupianmulu[i]..".bmp")
+						break
+					end
+				end
+				israndom = false
+			end
 		end
 		--24
 		--595
 	end
 	random.script[XE_LBUP] = function()
-		speed_x = math:random(1,10)
+		if israndom == false then
+			speed_x = math.random(5,10)
+			israndom = true
+		end
 	end
 	--ÌØÐ§
 
