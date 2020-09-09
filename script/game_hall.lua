@@ -923,9 +923,9 @@ function InitMainGame_hall(wnd)
 
     --±³¾°ÇÐ»»¿ªÊ¼
     beijing_BKWND = CreateWindow(buttonpad.id,0,150,409,233)
-    beijing_BKWND:SetVisible(0)
+	beijing_BKWND:SetVisible(0)
+	
 	local beijing_bk = beijing_BKWND:AddImage(path.."txbk.BMP",0,-121,628,406)--±³¾°
-	local beijing_bkcase = beijing_BKWND:AddImage(path.."txbk1.BMP",0,-121,628,406)--±³¾°
 	beijing_bk:AddFont("±³¾°ÇÐ»»&ÌØÐ§¿ØÖÆ",15,8,-214,-21,200,33,0xffffff)
 	
     local liuguang = beijing_BKWND:AddImage(path.."checkbox_login.BMP",43,-55,24,24)
@@ -952,11 +952,14 @@ function InitMainGame_hall(wnd)
     yudidianji:SetTouchEnabled(0)
 	yudi:AddFont("ÓêµÎÌØÐ§",15,0,24,0,500,20,0xffffff)
 	
-	local bkadd = beijing_BKWND:AddButton(path.."base_server1.BMP",path.."base_server2.BMP",path.."base_server3.BMP",85+87,115,105,30)
+	local bkadd = beijing_BKWND:AddButton(path.."base_server1.BMP",path.."base_server2.BMP",path.."base_server3.BMP",85-10,145,105,30)
     bkadd:AddFont("Ìí¼Ó",15,8,0,0,105,30,0x1e1e1e)
 
-	local renovate = beijing_BKWND:AddButton(path.."base_server1.BMP",path.."base_server2.BMP",path.."base_server3.BMP",85+254,115,105,30)
-    renovate:AddFont("Ë¢ÐÂ",15,8,0,0,105,30,0x1e1e1e)
+	local renovate = beijing_BKWND:AddButton(path.."base_server1.BMP",path.."base_server2.BMP",path.."base_server3.BMP",85+354,145,105,30)
+	renovate:AddFont("Ë¢ÐÂ",15,8,0,0,105,30,0x1e1e1e)
+	
+	local random = beijing_BKWND:AddButton(path.."base_server1.BMP",path.."base_server2.BMP",path.."base_server3.BMP",85+172,145,105,30)
+	random:AddFont("Ëæ»ú",15,8,0,0,105,30,0x1e1e1e)
 
 
 	local pianyi = beijing_BKWND:AddImage(path.."checkbox_login.BMP",443,-55,24,24)
