@@ -259,7 +259,7 @@ function InitMainGame_hall(wnd)
 	--底图背景
 	MainHall_BK = wnd:AddImage(path_MailHallSkin,0,0,1280,800)
 	MainHall_Effect = wnd:AddEffect(Dynamic_BG,0,0,1280,800)
-	btn_taaa = wnd:AddImage("wallpaper/1.bmp",-110,-55,1500,910)
+	btn_taaa = wnd:AddImage("wallpaper/20.bmp",-110,-55,1500,910)
 	btn_taaa:SetTouchEnabled(1)
 	local backgroundeffect = wnd:AddEffect("../Data/Magic/Common/UI/changwai/183Skin1/183Skin1_od.x",0,0,1280,800)
 	backgroundeffect:SetTouchEnabled(0)
@@ -287,12 +287,12 @@ function InitMainGame_hall(wnd)
     local buttonpad = CreateWindow(wnd.id,662,440,400,33)
     buttonpad:SetVisible(0)
     local playlisttable = CreateWindow(buttonpad.id,0,0,478,389)
-    local musicbutton = buttonpad:AddButton(path_lolcard.."btnBK.BMP",path_lolcard.."btnBK_2.BMP",path_lolcard.."btnBK_3.BMP",0,390,100,33)
-    musicbutton:AddFont("音乐开关",15,8,0,0,100,33,0xffffff)
-    local saoleibutton = buttonpad:AddButton(path_lolcard.."btnBK.BMP",path_lolcard.."btnBK_2.BMP",path_lolcard.."btnBK_3.BMP",110,390,100,33)
-    saoleibutton:AddFont("扫雷开关",15,8,0,0,100,33,0xffffff)
-    local beijingbutton = buttonpad:AddButton(path_lolcard.."btnBK.BMP",path_lolcard.."btnBK_2.BMP",path_lolcard.."btnBK_3.BMP",220,390,100,33)
-    beijingbutton:AddFont("背景相关",15,8,0,0,100,33,0xffffff)
+    local musicbutton = buttonpad:AddButton(path.."base_server1.BMP",path.."base_server2.BMP",path.."base_server3.BMP",0,390,105,30)
+    musicbutton:AddFont("音乐开关",15,8,0,0,100,33,0x1e1e1e)
+    local saoleibutton = buttonpad:AddButton(path.."base_server1.BMP",path.."base_server2.BMP",path.."base_server3.BMP",0,390-55,105,30)
+    saoleibutton:AddFont("扫雷开关",15,8,0,0,100,33,0x1e1e1e)
+    local beijingbutton = buttonpad:AddButton(path.."base_server1.BMP",path.."base_server2.BMP",path.."base_server3.BMP",0,390-110,105,30)
+    beijingbutton:AddFont("背景相关",15,8,0,0,100,33,0x1e1e1e)
     musicbutton.script[XE_LBUP] = function()
         playlisttable:SetVisible(1)
         musicbutton:SetVisible(0)
@@ -924,43 +924,46 @@ function InitMainGame_hall(wnd)
 
     --背景切换开始
     beijing_BKWND = CreateWindow(buttonpad.id,0,150,409,233)
-    beijing_BKWND:SetVisible(0)
+	beijing_BKWND:SetVisible(0)
+	
 	local beijing_bk = beijing_BKWND:AddImage(path.."txbk.BMP",0,-121,628,406)--背景
-	local beijing_bkcase = beijing_BKWND:AddImage(path.."txbk1.BMP",0,-121,628,406)--背景
 	beijing_bk:AddFont("背景切换&特效控制",15,8,-214,-21,200,33,0xffffff)
 	
-    local liuguang = beijing_BKWND:AddImage(path.."checkbox_login.BMP",43,-55,24,24)
+    local liuguang = beijing_BKWND:AddImage(path.."checkbox_login.BMP",110,-50,24,24)
     liuguang:SetTouchEnabled(1)
     local liuguangdianji = liuguang:AddImage(path.."checkboxhave_login.BMP",0,0,24,24)
     liuguangdianji:SetTouchEnabled(0)
     liuguang:AddFont("流光特效",15,0,24,0,500,20,0xffffff)
 	
-	local yinghuashu = beijing_BKWND:AddImage(path.."checkbox_login.BMP",143,-55,24,24)
+	local yinghuashu = beijing_BKWND:AddImage(path.."checkbox_login.BMP",110+155,-50,24,24)
     yinghuashu:SetTouchEnabled(1)
     local yinghuashudianji = yinghuashu:AddImage(path.."checkboxhave_login.BMP",0,0,24,24)
     yinghuashudianji:SetTouchEnabled(0)
     yinghuashu:AddFont("樱花特效",15,0,24,0,500,20,0xffffff)
 	
-    local luoxue = beijing_BKWND:AddImage(path.."checkbox_login.BMP",243,-55,24,24)
+    local luoxue = beijing_BKWND:AddImage(path.."checkbox_login.BMP",110+310,-50,24,24)
     luoxue:SetTouchEnabled(1)
     local luoxuedianji = luoxue:AddImage(path.."checkboxhave_login.BMP",0,0,24,24)
     luoxuedianji:SetTouchEnabled(0)
     luoxue:AddFont("落雪特效",15,0,24,0,500,20,0xffffff)
 	
-	local yudi = beijing_BKWND:AddImage(path.."checkbox_login.BMP",343,-55,24,24)
+	local yudi = beijing_BKWND:AddImage(path.."checkbox_login.BMP",110,-4,24,24)
     yudi:SetTouchEnabled(1)
     local yudidianji = yudi:AddImage(path.."checkboxhave_login.BMP",0,0,24,24)
     yudidianji:SetTouchEnabled(0)
 	yudi:AddFont("雨滴特效",15,0,24,0,500,20,0xffffff)
 	
-	local bkadd = beijing_BKWND:AddButton(path.."base_server1.BMP",path.."base_server2.BMP",path.."base_server3.BMP",85+87,115,105,30)
+	local bkadd = beijing_BKWND:AddButton(path.."base_server1.BMP",path.."base_server2.BMP",path.."base_server3.BMP",85-10,155+29,105,30)
     bkadd:AddFont("添加",15,8,0,0,105,30,0x1e1e1e)
 
-	local renovate = beijing_BKWND:AddButton(path.."base_server1.BMP",path.."base_server2.BMP",path.."base_server3.BMP",85+254,115,105,30)
-    renovate:AddFont("刷新",15,8,0,0,105,30,0x1e1e1e)
+	local renovate = beijing_BKWND:AddButton(path.."base_server1.BMP",path.."base_server2.BMP",path.."base_server3.BMP",85+354,155+29,105,30)
+	renovate:AddFont("刷新",15,8,0,0,105,30,0x1e1e1e)
+	
+	local random = beijing_BKWND:AddButton(path.."base_server1.BMP",path.."base_server2.BMP",path.."base_server3.BMP",85+172,155+29,105,30)
+	random:AddFont("随机",15,8,0,0,105,30,0x1e1e1e)
 
 
-	local pianyi = beijing_BKWND:AddImage(path.."checkbox_login.BMP",443,-55,24,24)
+	local pianyi = beijing_BKWND:AddImage(path.."checkbox_login.BMP",110+155,-4,24,24)
     pianyi:SetTouchEnabled(1)
     local pianyidianji = pianyi:AddImage(path.."checkboxhave_login.BMP",0,0,24,24)
     pianyidianji:SetTouchEnabled(0)
@@ -1053,7 +1056,7 @@ function InitMainGame_hall(wnd)
 		end
 	end
 
-	beijingyulanpad = CreateWindow(beijing_BKWND.id,28,8,571,56)
+	beijingyulanpad = CreateWindow(beijing_BKWND.id,28,28+54,571,56)
 	local test123 = beijingyulanpad:AddImage("../data/ui/main/xzbk.png",1,0,569,56)--改这个大小来改底板面板大小
 	local file = io.open("wallpaper/linmeng.txt",'a')
 	file:close()
