@@ -961,6 +961,9 @@ function InitMainGame_hall(wnd)
 	
 	local random = beijing_BKWND:AddButton(path.."base_server1.BMP",path.."base_server2.BMP",path.."base_server3.BMP",85+172,155+29,105,30)
 	random:AddFont("Ëæ»ú",15,8,0,0,105,30,0x1e1e1e)
+	random.script[XE_LBUP] = function()
+		speed_x = math:random(-10,10)
+	end
 
 
 	local pianyi = beijing_BKWND:AddImage(path.."checkbox_login.BMP",110+155,-4,24,24)
